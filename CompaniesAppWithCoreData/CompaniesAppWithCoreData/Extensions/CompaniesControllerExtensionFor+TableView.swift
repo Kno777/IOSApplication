@@ -73,7 +73,25 @@ extension CompainesController {
     
     override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let view = UIView()
+        let label = UILabel()
+        let icon = UIImageView()
+        icon.image = UIImage(named: "profile2")
+        icon.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "Names"
+        label.font = .boldSystemFont(ofSize: 18)
+        label.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .lightBlue
+        view.addSubview(label)
+        view.addSubview(icon)
+        
+        NSLayoutConstraint.activate([
+            icon.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            icon.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+            label.leadingAnchor.constraint(equalTo: icon.trailingAnchor, constant: 8),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            
+        ])
         return view
     }
     

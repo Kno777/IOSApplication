@@ -6,6 +6,7 @@
 //
 
 import Firebase
+import FirebaseStorage
 import UIKit
 
 class ViewController: UIViewController {
@@ -14,6 +15,7 @@ class ViewController: UIViewController {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handelPlusPhoto), for: .touchUpInside)
         return button
     }()
     
@@ -93,6 +95,16 @@ class ViewController: UIViewController {
         plusPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
     }
     
+    @objc private func handelPlusPhoto() {
+        print("Attemting to uploud photo from device.")
+        
+        let imagePickerController = UIImagePickerController()
+        imagePickerController.allowsEditing = true
+        imagePickerController.delegate = self
+        
+        present(imagePickerController, animated: true)
+    }
+    
     @objc private func handelEmailTextInputChange() {
         
         let isFormValied = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
@@ -122,9 +134,56 @@ class ViewController: UIViewController {
             }
             
             print("Successfully created user: ", user?.user.uid ?? "")
+            
+            guard let image = self.plusPhotoButton.imageView?.image else { return }
+            
+            guard let uploadData = image.jpegData(compressionQuality: 0.3) else { return }
+            
+            let filename = UUID().uuidString
+            
+            let storageRef = Storage.storage().reference().child("profile_images").child(filename)
+            
+            storageRef.putData(uploadData) { metaData, err in
+                if let err = err {
+                    print("Failed to upload profile image: ", err)
+                    return
+                }
+                
+                storageRef.downloadURL { url, err in
+                    if let err = err {
+                        print("Failed to get download URL: ", err)
+                        return
+                    }
+                    
+                    guard let downloadURL = url else {
+                        print("Download URL is nil.")
+                        return
+                    }
+                    
+                    let profileImageUrl = downloadURL.absoluteString
+                    print("Successfully uploaded profile image.", profileImageUrl)
+                    
+                    guard let user = user else { return }
+
+                    let userDictionaryValues = ["username": username, "profileImageUrl": profileImageUrl]
+                    let values = [user.user.uid: userDictionaryValues]
+
+                    Database.database().reference().child("users").updateChildValues(values) { err, dbRef in
+
+                        if let err = err {
+                            print("Failed to save user into database.", err)
+                            return
+                        }
+
+                        print("Successfully saved user info into database. ")
+
+                    }
+
+                }
+                
+            }
+            
         }
-        
-        
     }
 
     fileprivate func setupInputFields() {
@@ -142,3 +201,25 @@ class ViewController: UIViewController {
     }
 }
 
+extension ViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+        
+        
+        if let editingImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
+            
+            plusPhotoButton.setImage(editingImage.withRenderingMode(.alwaysOriginal), for: .normal)
+            
+        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            
+            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
+        }
+        
+        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
+        plusPhotoButton.layer.masksToBounds = true
+        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
+        plusPhotoButton.layer.borderWidth = 3
+                
+        dismiss(animated: true)
+    }
+}

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 
 class MainTabBarController: UITabBarController {
@@ -13,6 +14,18 @@ class MainTabBarController: UITabBarController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemBackground
+        
+        if Auth.auth().currentUser == nil {
+            // show if user is not logged in
+            
+            DispatchQueue.main.async {
+                let loginController = LoginController()
+                let navigationController = UINavigationController(rootViewController: loginController)
+                navigationController.modalPresentationStyle = .fullScreen
+                self.present(navigationController, animated: true)
+            }
+            return
+        }
         
         let layout = UICollectionViewFlowLayout()
         let userProfileController = UserProfileController(collectionViewLayout: layout)
@@ -23,7 +36,7 @@ class MainTabBarController: UITabBarController {
       
         viewControllers = [
             navController,
-            UIViewController()
+            SignUpController(),
         ]
     }
 }

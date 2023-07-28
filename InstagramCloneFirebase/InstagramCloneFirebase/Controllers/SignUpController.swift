@@ -9,7 +9,7 @@ import Firebase
 import FirebaseStorage
 import UIKit
 
-class ViewController: UIViewController {
+class SignUpController: UIViewController {
     
     private lazy var plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -201,7 +201,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
+extension SignUpController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         
         

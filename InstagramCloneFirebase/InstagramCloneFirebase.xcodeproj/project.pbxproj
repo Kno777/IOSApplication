@@ -20,6 +20,9 @@
 		93B6BDAE2A71C0F900F5C3B4 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 93B6BDAD2A71C0F900F5C3B4 /* FirebaseAuth */; };
 		93B6BDB02A71C0F900F5C3B4 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 93B6BDAF2A71C0F900F5C3B4 /* FirebaseDatabase */; };
 		93B6BDB22A71C0F900F5C3B4 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 93B6BDB12A71C0F900F5C3B4 /* FirebaseStorage */; };
+		93B6BDB52A72E62400F5C3B4 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDB42A72E62400F5C3B4 /* MainTabBarController.swift */; };
+		93B6BDB72A72FA0F00F5C3B4 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDB62A72FA0F00F5C3B4 /* UserProfileController.swift */; };
+		93B6BDBB2A73177300F5C3B4 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDBA2A73177300F5C3B4 /* UserProfileHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +38,9 @@
 		93B6BDA62A71ACDF00F5C3B4 /* UITextField+pleacholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+pleacholder.swift"; sourceTree = "<group>"; };
 		93B6BDA82A71AF4900F5C3B4 /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
 		93B6BDAA2A71BFB100F5C3B4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		93B6BDB42A72E62400F5C3B4 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		93B6BDB62A72FA0F00F5C3B4 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
+		93B6BDBA2A73177300F5C3B4 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,11 +76,12 @@
 		93B6BD8D2A71997300F5C3B4 /* InstagramCloneFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				93B6BDB82A73175C00F5C3B4 /* Views */,
+				93B6BDB32A72E60B00F5C3B4 /* Controllers */,
 				93B6BDA52A71ACBF00F5C3B4 /* Helpers */,
 				93B6BDA22A71AB4500F5C3B4 /* Extensions */,
 				93B6BD8E2A71997300F5C3B4 /* AppDelegate.swift */,
 				93B6BD902A71997300F5C3B4 /* SceneDelegate.swift */,
-				93B6BD922A71997300F5C3B4 /* ViewController.swift */,
 				93B6BD942A71997300F5C3B4 /* Main.storyboard */,
 				93B6BD972A71997500F5C3B4 /* Assets.xcassets */,
 				93B6BD992A71997500F5C3B4 /* LaunchScreen.storyboard */,
@@ -99,6 +106,32 @@
 				93B6BDA62A71ACDF00F5C3B4 /* UITextField+pleacholder.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		93B6BDB32A72E60B00F5C3B4 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BD922A71997300F5C3B4 /* ViewController.swift */,
+				93B6BDB42A72E62400F5C3B4 /* MainTabBarController.swift */,
+				93B6BDB62A72FA0F00F5C3B4 /* UserProfileController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		93B6BDB82A73175C00F5C3B4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BDB92A73176200F5C3B4 /* UserProfile */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		93B6BDB92A73176200F5C3B4 /* UserProfile */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BDBA2A73177300F5C3B4 /* UserProfileHeader.swift */,
+			);
+			path = UserProfile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,7 +216,10 @@
 			files = (
 				93B6BDA92A71AF4900F5C3B4 /* UIViewExtension.swift in Sources */,
 				93B6BD932A71997300F5C3B4 /* ViewController.swift in Sources */,
+				93B6BDB72A72FA0F00F5C3B4 /* UserProfileController.swift in Sources */,
+				93B6BDBB2A73177300F5C3B4 /* UserProfileHeader.swift in Sources */,
 				93B6BDA72A71ACDF00F5C3B4 /* UITextField+pleacholder.swift in Sources */,
+				93B6BDB52A72E62400F5C3B4 /* MainTabBarController.swift in Sources */,
 				93B6BD8F2A71997300F5C3B4 /* AppDelegate.swift in Sources */,
 				93B6BD912A71997300F5C3B4 /* SceneDelegate.swift in Sources */,
 				93B6BDA42A71AB5B00F5C3B4 /* UIColorExtension.swift in Sources */,

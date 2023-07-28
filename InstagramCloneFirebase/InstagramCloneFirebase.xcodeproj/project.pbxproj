@@ -24,6 +24,9 @@
 		93B6BDB72A72FA0F00F5C3B4 /* UserProfileController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDB62A72FA0F00F5C3B4 /* UserProfileController.swift */; };
 		93B6BDBB2A73177300F5C3B4 /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDBA2A73177300F5C3B4 /* UserProfileHeader.swift */; };
 		93B6BDBD2A740C5600F5C3B4 /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDBC2A740C5600F5C3B4 /* LoginController.swift */; };
+		93B6BDC32A743B2F00F5C3B4 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDC22A743B2F00F5C3B4 /* User.swift */; };
+		93B6BDC62A743B7800F5C3B4 /* UserProfileController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDC52A743B7800F5C3B4 /* UserProfileController+Extension.swift */; };
+		93B6BDC92A743CF200F5C3B4 /* SignUpControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDC82A743CF200F5C3B4 /* SignUpControllerExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +46,9 @@
 		93B6BDB62A72FA0F00F5C3B4 /* UserProfileController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileController.swift; sourceTree = "<group>"; };
 		93B6BDBA2A73177300F5C3B4 /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		93B6BDBC2A740C5600F5C3B4 /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
+		93B6BDC22A743B2F00F5C3B4 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		93B6BDC52A743B7800F5C3B4 /* UserProfileController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserProfileController+Extension.swift"; sourceTree = "<group>"; };
+		93B6BDC82A743CF200F5C3B4 /* SignUpControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpControllerExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +84,7 @@
 		93B6BD8D2A71997300F5C3B4 /* InstagramCloneFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				93B6BDBF2A743AFA00F5C3B4 /* Models */,
 				93B6BDB82A73175C00F5C3B4 /* Views */,
 				93B6BDB32A72E60B00F5C3B4 /* Controllers */,
 				93B6BDA52A71ACBF00F5C3B4 /* Helpers */,
@@ -96,6 +103,8 @@
 		93B6BDA22A71AB4500F5C3B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				93B6BDC72A743CD700F5C3B4 /* LoginAndSignUpExtensions */,
+				93B6BDC42A743B5900F5C3B4 /* UserProfileExtensions */,
 				93B6BDA32A71AB5B00F5C3B4 /* UIColorExtension.swift */,
 				93B6BDA82A71AF4900F5C3B4 /* UIViewExtension.swift */,
 			);
@@ -113,10 +122,9 @@
 		93B6BDB32A72E60B00F5C3B4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				93B6BD922A71997300F5C3B4 /* SignUpController.swift */,
+				93B6BDBE2A742EDB00F5C3B4 /* Login */,
 				93B6BDB42A72E62400F5C3B4 /* MainTabBarController.swift */,
 				93B6BDB62A72FA0F00F5C3B4 /* UserProfileController.swift */,
-				93B6BDBC2A740C5600F5C3B4 /* LoginController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +143,47 @@
 				93B6BDBA2A73177300F5C3B4 /* UserProfileHeader.swift */,
 			);
 			path = UserProfile;
+			sourceTree = "<group>";
+		};
+		93B6BDBE2A742EDB00F5C3B4 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BD922A71997300F5C3B4 /* SignUpController.swift */,
+				93B6BDBC2A740C5600F5C3B4 /* LoginController.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		93B6BDBF2A743AFA00F5C3B4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BDC12A743B1300F5C3B4 /* UserProfileModel */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		93B6BDC12A743B1300F5C3B4 /* UserProfileModel */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BDC22A743B2F00F5C3B4 /* User.swift */,
+			);
+			path = UserProfileModel;
+			sourceTree = "<group>";
+		};
+		93B6BDC42A743B5900F5C3B4 /* UserProfileExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BDC52A743B7800F5C3B4 /* UserProfileController+Extension.swift */,
+			);
+			path = UserProfileExtensions;
+			sourceTree = "<group>";
+		};
+		93B6BDC72A743CD700F5C3B4 /* LoginAndSignUpExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				93B6BDC82A743CF200F5C3B4 /* SignUpControllerExtension.swift */,
+			);
+			path = LoginAndSignUpExtensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -217,6 +266,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				93B6BDC62A743B7800F5C3B4 /* UserProfileController+Extension.swift in Sources */,
 				93B6BDA92A71AF4900F5C3B4 /* UIViewExtension.swift in Sources */,
 				93B6BD932A71997300F5C3B4 /* SignUpController.swift in Sources */,
 				93B6BDB72A72FA0F00F5C3B4 /* UserProfileController.swift in Sources */,
@@ -227,6 +277,8 @@
 				93B6BD912A71997300F5C3B4 /* SceneDelegate.swift in Sources */,
 				93B6BDA42A71AB5B00F5C3B4 /* UIColorExtension.swift in Sources */,
 				93B6BDBD2A740C5600F5C3B4 /* LoginController.swift in Sources */,
+				93B6BDC92A743CF200F5C3B4 /* SignUpControllerExtension.swift in Sources */,
+				93B6BDC32A743B2F00F5C3B4 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

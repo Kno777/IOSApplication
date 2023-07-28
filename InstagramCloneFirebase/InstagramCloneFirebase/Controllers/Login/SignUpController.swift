@@ -11,7 +11,7 @@ import UIKit
 
 class SignUpController: UIViewController {
     
-    private lazy var plusPhotoButton: UIButton = {
+    lazy var plusPhotoButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "plus_photo")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -77,6 +77,22 @@ class SignUpController: UIViewController {
         signUp.isEnabled = false
         return signUp
     }()
+    
+    private lazy var alreadyHaveAccountButton: UIButton = {
+        let button = UIButton(type: .system)
+        
+        let attributedText = NSMutableAttributedString(string: "Already have an account?", attributes: [
+            NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.lightGray])
+        
+        attributedText.append(NSAttributedString(string: " Log in.", attributes: [NSAttributedString.Key.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedString.Key.foregroundColor: UIColor.singUpButtonDarkBlueColor]))
+        
+        button.setAttributedTitle(attributedText, for: .normal)
+        button.titleLabel?.textColor = .black
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(handelAlreadyHaveAccount), for: .touchUpInside)
+        return button
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,6 +102,8 @@ class SignUpController: UIViewController {
         
         view.addSubview(plusPhotoButton)
         
+        view.addSubview(alreadyHaveAccountButton)
+        
         setupInputFields()
         
         NSLayoutConstraint.activate([
@@ -93,6 +111,12 @@ class SignUpController: UIViewController {
         ])
         
         plusPhotoButton.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 40, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 140, height: 140)
+        
+        alreadyHaveAccountButton.anchor(top: nil, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+    }
+    
+    @objc private func handelAlreadyHaveAccount() {
+        navigationController?.popViewController(animated: true)
     }
     
     @objc private func handelPlusPhoto() {
@@ -198,28 +222,5 @@ class SignUpController: UIViewController {
         view.addSubview(stackView)
         
         stackView.anchor(top: plusPhotoButton.bottomAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: nil, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 20, paddingLeft: 40, paddingBottom: 0, paddingRight: -40, width: 0, height: 200)
-    }
-}
-
-extension SignUpController: UIImagePickerControllerDelegate & UINavigationControllerDelegate {
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
-        
-        
-        if let editingImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage {
-            
-            plusPhotoButton.setImage(editingImage.withRenderingMode(.alwaysOriginal), for: .normal)
-            
-        } else if let originalImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
-            
-            plusPhotoButton.setImage(originalImage.withRenderingMode(.alwaysOriginal), for: .normal)
-        }
-        
-        plusPhotoButton.layer.cornerRadius = plusPhotoButton.frame.width / 2
-        plusPhotoButton.layer.masksToBounds = true
-        plusPhotoButton.layer.borderColor = UIColor.black.cgColor
-        plusPhotoButton.layer.borderWidth = 3
-                
-        dismiss(animated: true)
     }
 }

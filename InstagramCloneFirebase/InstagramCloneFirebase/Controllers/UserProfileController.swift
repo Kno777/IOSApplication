@@ -12,10 +12,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     var user: User?
     
-    let cellId = "cellId"
-    
-    let headerId = "headerId"
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,9 +24,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         fetchUser()
         
         
-        collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: headerId)
+        collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderAndCell.headerId)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
         
         setupLogOutButton()
     }

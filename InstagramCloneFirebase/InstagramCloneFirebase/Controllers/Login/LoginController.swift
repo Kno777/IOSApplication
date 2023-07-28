@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LoginController: UIViewController {
     
@@ -51,7 +52,7 @@ class LoginController: UIViewController {
         email.layer.borderColor = UIColor.lightGray.cgColor
         email.layer.cornerRadius = 10
         email.attributedPlaceholder = placeholderTextandColor(title: "Email", color: .lightGray, fontSize: 14)
-        //email.addTarget(self, action: #selector(handelEmailTextInputChange), for: .editingChanged)
+        email.addTarget(self, action: #selector(handelTextInputChange), for: .editingChanged)
         return email
     }()
     
@@ -67,7 +68,7 @@ class LoginController: UIViewController {
         password.layer.borderColor = UIColor.lightGray.cgColor
         password.layer.cornerRadius = 10
         password.attributedPlaceholder = placeholderTextandColor(title: "Password", color: .lightGray, fontSize: 14)
-        //password.addTarget(self, action: #selector(handelEmailTextInputChange), for: .editingChanged)
+        password.addTarget(self, action: #selector(handelTextInputChange), for: .editingChanged)
         return password
     }()
     
@@ -78,7 +79,7 @@ class LoginController: UIViewController {
         login.layer.cornerRadius = 5
         login.titleLabel?.font = .boldSystemFont(ofSize: 14)
         login.setTitleColor(.white, for: .normal)
-        //login.addTarget(self, action: #selector(handelLogin), for: .touchUpInside)
+        login.addTarget(self, action: #selector(handelLogin), for: .touchUpInside)
         login.isEnabled = false
         return login
     }()
@@ -106,6 +107,51 @@ class LoginController: UIViewController {
         logoImageView.centerXAnchor.constraint(equalTo: logoContainerView.centerXAnchor).isActive = true
         
         setupInputFields()
+        
+    }
+    
+    @objc private func handelLogin() {
+        
+        guard let email = emailTextField.text else { return }
+        
+        guard let password = passwordTextField.text else { return }
+        
+        
+        Auth.auth().signIn(withEmail: email, password: password) { user, err in
+            
+            if let err = err {
+                print("Failed to log in. ", err)
+                return
+            }
+            
+            print("Successfully logged back in with user: ", user?.user.uid ?? "nil")
+            
+            // MARK: - fixed login problem, now you can log out and log in and see current user
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let mainTabBarController = windowScene.windows.first?.rootViewController as? MainTabBarController {
+                
+                mainTabBarController.setupViewControllers()
+
+            } else {
+                // Unable to access MainTabBarController
+                return
+            }
+                        
+            self.dismiss(animated: true)
+        }
+    }
+    
+    @objc private func handelTextInputChange() {
+        
+        let isFormValied = emailTextField.text?.count ?? 0 > 0  && passwordTextField.text?.count ?? 0 > 0
+        
+        if isFormValied {
+            loginButton.isEnabled = true
+            loginButton.backgroundColor = .singUpButtonDarkBlueColor
+        } else {
+            loginButton.isEnabled = false
+            loginButton.backgroundColor = .signUpButtonBlueColor
+        }
         
     }
     

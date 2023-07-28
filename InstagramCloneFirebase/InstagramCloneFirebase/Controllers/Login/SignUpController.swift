@@ -30,7 +30,7 @@ class SignUpController: UIViewController {
         email.layer.borderColor = UIColor.lightGray.cgColor
         email.layer.cornerRadius = 10
         email.attributedPlaceholder = placeholderTextandColor(title: "Email", color: .lightGray, fontSize: 14)
-        email.addTarget(self, action: #selector(handelEmailTextInputChange), for: .editingChanged)
+        email.addTarget(self, action: #selector(handelTextInputChange), for: .editingChanged)
         return email
     }()
     
@@ -45,7 +45,7 @@ class SignUpController: UIViewController {
         username.layer.borderColor = UIColor.lightGray.cgColor
         username.layer.cornerRadius = 10
         username.attributedPlaceholder = placeholderTextandColor(title: "Username", color: .lightGray, fontSize: 14)
-        username.addTarget(self, action: #selector(handelEmailTextInputChange), for: .editingChanged)
+        username.addTarget(self, action: #selector(handelTextInputChange), for: .editingChanged)
         return username
     }()
     
@@ -61,7 +61,7 @@ class SignUpController: UIViewController {
         password.layer.borderColor = UIColor.lightGray.cgColor
         password.layer.cornerRadius = 10
         password.attributedPlaceholder = placeholderTextandColor(title: "Password", color: .lightGray, fontSize: 14)
-        password.addTarget(self, action: #selector(handelEmailTextInputChange), for: .editingChanged)
+        password.addTarget(self, action: #selector(handelTextInputChange), for: .editingChanged)
         return password
     }()
     
@@ -129,7 +129,7 @@ class SignUpController: UIViewController {
         present(imagePickerController, animated: true)
     }
     
-    @objc private func handelEmailTextInputChange() {
+    @objc private func handelTextInputChange() {
         
         let isFormValied = emailTextField.text?.count ?? 0 > 0 && usernameTextField.text?.count ?? 0 > 0 && passwordTextField.text?.count ?? 0 > 0
         
@@ -200,6 +200,19 @@ class SignUpController: UIViewController {
                         }
 
                         print("Successfully saved user info into database. ")
+                        
+                        // MARK: - fixed login problem, now you can sing up and login and see current user
+                        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+                           let mainTabBarController = windowScene.windows.first?.rootViewController as? MainTabBarController {
+                            
+                            mainTabBarController.setupViewControllers()
+                            
+                            self.dismiss(animated: true)
+
+                        } else {
+                            // Unable to access MainTabBarController
+                            return
+                        }
 
                     }
 

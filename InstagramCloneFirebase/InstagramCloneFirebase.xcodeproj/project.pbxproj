@@ -30,6 +30,7 @@
 		93B6BDCC2A74630200F5C3B4 /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDCB2A74630200F5C3B4 /* PhotoSelectorController.swift */; };
 		93B6BDCF2A746B4800F5C3B4 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDCE2A746B4800F5C3B4 /* Utils.swift */; };
 		93B6BDD22A754D1200F5C3B4 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDD12A754D1200F5C3B4 /* PhotoSelectorCell.swift */; };
+		93B6BDD42A765D9500F5C3B4 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93B6BDD32A765D9500F5C3B4 /* PhotoSelectorHeader.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		93B6BDCB2A74630200F5C3B4 /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		93B6BDCE2A746B4800F5C3B4 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		93B6BDD12A754D1200F5C3B4 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
+		93B6BDD32A765D9500F5C3B4 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -215,6 +217,7 @@
 			isa = PBXGroup;
 			children = (
 				93B6BDD12A754D1200F5C3B4 /* PhotoSelectorCell.swift */,
+				93B6BDD32A765D9500F5C3B4 /* PhotoSelectorHeader.swift */,
 			);
 			path = AddPhoto;
 			sourceTree = "<group>";
@@ -308,6 +311,7 @@
 				93B6BDA72A71ACDF00F5C3B4 /* UITextField+pleacholder.swift in Sources */,
 				93B6BDB52A72E62400F5C3B4 /* MainTabBarController.swift in Sources */,
 				93B6BD8F2A71997300F5C3B4 /* AppDelegate.swift in Sources */,
+				93B6BDD42A765D9500F5C3B4 /* PhotoSelectorHeader.swift in Sources */,
 				93B6BD912A71997300F5C3B4 /* SceneDelegate.swift in Sources */,
 				93B6BDCC2A74630200F5C3B4 /* PhotoSelectorController.swift in Sources */,
 				93B6BDA42A71AB5B00F5C3B4 /* UIColorExtension.swift in Sources */,

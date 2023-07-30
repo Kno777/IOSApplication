@@ -76,8 +76,4 @@ extension PhotoSelectorController {
 
         return header
     }
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
 }

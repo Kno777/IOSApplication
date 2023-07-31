@@ -14,29 +14,12 @@ class UserProfilePostsCell: UICollectionViewCell {
         
             guard let imageUrl = post?.imageUrl else { return }
             
-            guard let url = URL(string: imageUrl) else { return }
-            
-            URLSession.shared.dataTask(with: url) { data, resp, err in
-                if let err = err {
-                    print("Failed to get post. ", err)
-                    return
-                }
-                
-                guard let imageData = data else { return }
-                
-                let photoImage = UIImage(data: imageData)
-                
-                DispatchQueue.main.async {
-                    self.postImageView.image = photoImage
-                }
-                
-            }.resume()
-            
+            postImageView.loadImage(urlString: imageUrl)
         }
     }
     
-    lazy var postImageView: UIImageView = {
-       let image = UIImageView()
+    lazy var postImageView: CustomImageView = {
+       let image = CustomImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.backgroundColor = .red
         image.contentMode = .scaleAspectFill

@@ -13,15 +13,19 @@ class UserProfileHeader: UICollectionViewCell {
     var user: User? {
         didSet {
             print("Did set", user?.username ?? "")
-            setupProfileImage()
+            
+            guard let profileImageUrl = user?.profileImageUrl else { return }
+            
+            profileImageView.loadImage(urlString: profileImageUrl)
+            //setupProfileImage()
             
             usernameLabel.text = user?.username
         }
         
     }
     
-    private lazy var profileImageView: UIImageView = {
-       let image = UIImageView()
+    private lazy var profileImageView: CustomImageView = {
+       let image = CustomImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
         image.layer.cornerRadius = 100 / 2
         image.clipsToBounds = true

@@ -31,7 +31,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         setupLogOutButton()
         
-        fetchPosts()
+        //fetchPosts()
+        
+        fetchOrderedPosts()
     }
     
     @objc func handelLogOut() {
@@ -57,6 +59,26 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         present(alertController, animated: true)
     }
     
+    fileprivate func fetchOrderedPosts() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let ref = Database.database().reference().child("posts").child(uid)
+        
+        // perhaps later on we'll implement some pagination of data
+        ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+                            
+            let post = UserPostModel(dictonary: dictionary)
+            
+            self.posts.append(post)
+            
+            self.collectionView.reloadData()
+            
+        } withCancel: { err in
+            print("Failed to fetch posts from DB.", err)
+        }
+    }
+    
     fileprivate func fetchPosts() {
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
@@ -80,9 +102,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         } withCancel: { err in
             print("Failed to fetch posts from DB.", err)
         }
-        
-        
-        
     }
     
     fileprivate func setupLogOutButton() {

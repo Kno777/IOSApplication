@@ -36,6 +36,7 @@
 		93DEBA672A76891800A6048F /* UIViewController+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA662A76891800A6048F /* UIViewController+Extensions.swift */; };
 		93DEBA6B2A779D1D00A6048F /* UserPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6A2A779D1D00A6048F /* UserPostModel.swift */; };
 		93DEBA6D2A77A06E00A6048F /* UserProfilePostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6C2A77A06E00A6048F /* UserProfilePostsCell.swift */; };
+		93DEBA6F2A77AD5900A6048F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -67,6 +68,7 @@
 		93DEBA662A76891800A6048F /* UIViewController+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extensions.swift"; sourceTree = "<group>"; };
 		93DEBA6A2A779D1D00A6048F /* UserPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostModel.swift; sourceTree = "<group>"; };
 		93DEBA6C2A77A06E00A6048F /* UserProfilePostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePostsCell.swift; sourceTree = "<group>"; };
+		93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				93B6BDA62A71ACDF00F5C3B4 /* UITextField+pleacholder.swift */,
+				93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 			files = (
 				93B6BDC62A743B7800F5C3B4 /* UserProfileController+Extension.swift in Sources */,
 				93B6BDA92A71AF4900F5C3B4 /* UIViewExtension.swift in Sources */,
+				93DEBA6F2A77AD5900A6048F /* CustomImageView.swift in Sources */,
 				93B6BD932A71997300F5C3B4 /* SignUpController.swift in Sources */,
 				93DEBA6B2A779D1D00A6048F /* UserPostModel.swift in Sources */,
 				93DEBA652A7672A400A6048F /* SharePhotoController.swift in Sources */,

@@ -39,6 +39,7 @@
 		93DEBA6F2A77AD5900A6048F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */; };
 		93DEBA722A77BE6400A6048F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA712A77BE6400A6048F /* HomeController.swift */; };
 		93DEBA752A77C0D800A6048F /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA742A77C0D800A6048F /* HomePostCell.swift */; };
+		93DEBA782A780E6100A6048F /* Database+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA772A780E6100A6048F /* Database+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		93DEBA712A77BE6400A6048F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
 		93DEBA742A77C0D800A6048F /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
+		93DEBA772A780E6100A6048F /* Database+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 		93B6BDA22A71AB4500F5C3B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA762A780E4D00A6048F /* Firebase */,
 				93DEBA602A766F8700A6048F /* PhotoSelectorExrensions */,
 				93B6BDC72A743CD700F5C3B4 /* LoginAndSignUpExtensions */,
 				93B6BDC42A743B5900F5C3B4 /* UserProfileExtensions */,
@@ -294,6 +297,14 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		93DEBA762A780E4D00A6048F /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA772A780E6100A6048F /* Database+Extension.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -396,6 +407,7 @@
 				93B6BDC92A743CF200F5C3B4 /* SignUpControllerExtension.swift in Sources */,
 				93DEBA722A77BE6400A6048F /* HomeController.swift in Sources */,
 				93B6BDC32A743B2F00F5C3B4 /* User.swift in Sources */,
+				93DEBA782A780E6100A6048F /* Database+Extension.swift in Sources */,
 				93DEBA6D2A77A06E00A6048F /* UserProfilePostsCell.swift in Sources */,
 				93DEBA622A766FA700A6048F /* PhotoSelectorController+Extension.swift in Sources */,
 				93DEBA752A77C0D800A6048F /* HomePostCell.swift in Sources */,

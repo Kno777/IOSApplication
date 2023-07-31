@@ -28,38 +28,31 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
-        // MARK: - fetch users
-        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { snapshot in
+        Database.fetchUserWithUID(uid: uid) { user in
+            // MARK: - fetch users
+            self.fetchPostsWithUser(user: user)
+        }
+    }
+    
+    fileprivate func fetchPostsWithUser(user: User) {
+        // MARK: - fetch posts
+        Database.database().reference().child("posts").child(user.uid).observeSingleEvent(of: .value) { snapshot in
             
-            guard let userDict = snapshot.value as? [String: Any] else { return }
-            
-            let user = User(dictionary: userDict)
-            
-            // MARK: - fetch posts
-            Database.database().reference().child("posts").child(uid).observeSingleEvent(of: .value) { snapshot in
-                
-                guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
 
-                dictionaries.forEach { (key, value) in
-                    
-                    guard let dictionary = value as? [String: Any] else { return }
-                                                        
-                    let post = UserPostModel(user: user, dictonary: dictionary)
-                    
-                    self.posts.append(post)
-                }
+            dictionaries.forEach { (key, value) in
                 
-                self.collectionView.reloadData()
+                guard let dictionary = value as? [String: Any] else { return }
+                                                    
+                let post = UserPostModel(user: user, dictonary: dictionary)
                 
-            } withCancel: { err in
-                print("Failed to fetch posts from DB.", err)
+                self.posts.append(post)
             }
             
-            
+            self.collectionView.reloadData()
             
         } withCancel: { err in
-            print("Failed to fetch user from DB.", err)
-            return
+            print("Failed to fetch posts from DB.", err)
         }
     }
     

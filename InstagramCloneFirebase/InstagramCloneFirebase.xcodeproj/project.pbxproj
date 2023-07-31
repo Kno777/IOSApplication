@@ -37,6 +37,8 @@
 		93DEBA6B2A779D1D00A6048F /* UserPostModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6A2A779D1D00A6048F /* UserPostModel.swift */; };
 		93DEBA6D2A77A06E00A6048F /* UserProfilePostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6C2A77A06E00A6048F /* UserProfilePostsCell.swift */; };
 		93DEBA6F2A77AD5900A6048F /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */; };
+		93DEBA722A77BE6400A6048F /* HomeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA712A77BE6400A6048F /* HomeController.swift */; };
+		93DEBA752A77C0D800A6048F /* HomePostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA742A77C0D800A6048F /* HomePostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +71,8 @@
 		93DEBA6A2A779D1D00A6048F /* UserPostModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserPostModel.swift; sourceTree = "<group>"; };
 		93DEBA6C2A77A06E00A6048F /* UserProfilePostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfilePostsCell.swift; sourceTree = "<group>"; };
 		93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
+		93DEBA712A77BE6400A6048F /* HomeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeController.swift; sourceTree = "<group>"; };
+		93DEBA742A77C0D800A6048F /* HomePostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -146,6 +150,7 @@
 		93B6BDB32A72E60B00F5C3B4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA702A77BE5400A6048F /* Home */,
 				93DEBA682A7798AE00A6048F /* UserProfile */,
 				93B6BDCA2A7462E800F5C3B4 /* AddPhoto */,
 				93B6BDBE2A742EDB00F5C3B4 /* Login */,
@@ -157,6 +162,7 @@
 		93B6BDB82A73175C00F5C3B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA732A77C0BE00A6048F /* Home */,
 				93B6BDD02A754CF800F5C3B4 /* AddPhoto */,
 				93B6BDB92A73176200F5C3B4 /* UserProfile */,
 			);
@@ -272,6 +278,22 @@
 			path = UserPostModel;
 			sourceTree = "<group>";
 		};
+		93DEBA702A77BE5400A6048F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA712A77BE6400A6048F /* HomeController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		93DEBA732A77C0BE00A6048F /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA742A77C0D800A6048F /* HomePostCell.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -372,9 +394,11 @@
 				93B6BDBD2A740C5600F5C3B4 /* LoginController.swift in Sources */,
 				93B6BDD22A754D1200F5C3B4 /* PhotoSelectorCell.swift in Sources */,
 				93B6BDC92A743CF200F5C3B4 /* SignUpControllerExtension.swift in Sources */,
+				93DEBA722A77BE6400A6048F /* HomeController.swift in Sources */,
 				93B6BDC32A743B2F00F5C3B4 /* User.swift in Sources */,
 				93DEBA6D2A77A06E00A6048F /* UserProfilePostsCell.swift in Sources */,
 				93DEBA622A766FA700A6048F /* PhotoSelectorController+Extension.swift in Sources */,
+				93DEBA752A77C0D800A6048F /* HomePostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

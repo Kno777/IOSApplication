@@ -11,6 +11,7 @@ import Firebase
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var user: User?
+    var posts: [UserPostModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,9 +27,11 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderAndCell.headerId)
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
+        collectionView.register(UserProfilePostsCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
         
         setupLogOutButton()
+        
+        fetchPosts()
     }
     
     @objc func handelLogOut() {
@@ -52,6 +55,34 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         
         present(alertController, animated: true)
+    }
+    
+    fileprivate func fetchPosts() {
+        
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        Database.database().reference().child("posts").child(uid).observeSingleEvent(of: .value) { snapshot in
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+
+            dictionaries.forEach { (key, value) in
+                
+                guard let dictionary = value as? [String: Any] else { return }
+                                
+                let post = UserPostModel(dictonary: dictionary)
+                
+                self.posts.append(post)
+
+            }
+            
+            self.collectionView.reloadData()
+            
+        } withCancel: { err in
+            print("Failed to fetch posts from DB.", err)
+        }
+        
+        
+        
     }
     
     fileprivate func setupLogOutButton() {

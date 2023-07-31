@@ -67,10 +67,13 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         // perhaps later on we'll implement some pagination of data
         ref.queryOrdered(byChild: "creationDate").observe(.childAdded) { snapshot in
             guard let dictionary = snapshot.value as? [String: Any] else { return }
-                            
-            let post = UserPostModel(dictonary: dictionary)
             
-            self.posts.append(post)
+            
+            guard let user = self.user else { return }
+            let post = UserPostModel(user: user, dictonary: dictionary)
+            
+            self.posts.insert(post, at: 0)
+            //self.posts.append(post)
             
             self.collectionView.reloadData()
             
@@ -90,8 +93,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             dictionaries.forEach { (key, value) in
                 
                 guard let dictionary = value as? [String: Any] else { return }
+                
+                guard let user = self.user else { return }
                                 
-                let post = UserPostModel(dictonary: dictionary)
+                let post = UserPostModel(user: user, dictonary: dictionary)
                 
                 self.posts.append(post)
 

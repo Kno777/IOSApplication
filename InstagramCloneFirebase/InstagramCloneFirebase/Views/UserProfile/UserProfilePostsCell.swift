@@ -21,7 +21,6 @@ class UserProfilePostsCell: UICollectionViewCell {
     lazy var postImageView: CustomImageView = {
        let image = CustomImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .red
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         return image

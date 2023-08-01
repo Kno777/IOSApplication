@@ -24,7 +24,6 @@ class UserSearchCell: UICollectionViewCell {
    private lazy var userProfileImageView: CustomImageView = {
        let image = CustomImageView()
         image.translatesAutoresizingMaskIntoConstraints = false
-        image.backgroundColor = .red
         image.contentMode = .scaleAspectFill
         image.clipsToBounds = true
         image.layer.cornerRadius = 50 / 2

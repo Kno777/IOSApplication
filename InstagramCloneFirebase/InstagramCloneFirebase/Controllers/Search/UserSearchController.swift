@@ -15,11 +15,9 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
     
     private lazy var searchBar: UISearchBar = {
        let search = UISearchBar()
-        search.searchTextField.attributedPlaceholder = NSAttributedString(string: "Enter username...", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.systemFont(ofSize: 14)])
-        search.setImage(UIImage(named: "magnifyingglass"), for: .search, state: .normal)
-        search.setImage(UIImage(named: "xmark.circle.fill"), for: .clear, state: .normal)
+        search.placeholder = "Enter username..."
         search.tintColor = .black
-        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).textColor = .black
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .lightGray.withAlphaComponent(0.4)
         search.translatesAutoresizingMaskIntoConstraints = false
         
         search.delegate = self
@@ -27,11 +25,18 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         return search
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        searchBar.isHidden = false
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
         collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .onDrag
         
         navigationController?.navigationBar.addSubview(searchBar)
         
@@ -52,6 +57,11 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
             guard let dictonaries = snapshot.value as? [String: Any] else { return }
             
             dictonaries.forEach { key, value in
+                
+                if key == Auth.auth().currentUser?.uid {
+                    print("Found myself, omit from list")
+                    return
+                }
                 
                 guard let userDictonary = value as? [String: Any] else { return }
                 
@@ -84,6 +94,20 @@ class UserSearchController: UICollectionViewController, UICollectionViewDelegate
         }
         
         self.collectionView.reloadData()
+        
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        searchBar.isHidden = true
+        searchBar.resignFirstResponder()
+        
+        let user = self.filteredUsers[indexPath.item]
+        
+        let layout = UICollectionViewFlowLayout()
+        let userProfileController = UserProfileController(collectionViewLayout: layout)
+        userProfileController.userId = user.uid
+        navigationController?.pushViewController(userProfileController, animated: true)
         
     }
     

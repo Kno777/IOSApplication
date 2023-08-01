@@ -12,6 +12,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     
     var user: User?
     var posts: [UserPostModel] = []
+    var userId: String?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,18 +23,13 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         setupNavigationStyle()
         
-        fetchUser()
-        
-        
         collectionView.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderAndCell.headerId)
         
         collectionView.register(UserProfilePostsCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
         
         setupLogOutButton()
         
-        //fetchPosts()
-        
-        fetchOrderedPosts()
+        fetchUser()
     }
     
     @objc func handelLogOut() {
@@ -60,7 +56,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     fileprivate func fetchOrderedPosts() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        guard let uid = user?.uid else { return }
         
         let ref = Database.database().reference().child("posts").child(uid)
         
@@ -114,7 +110,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     fileprivate func fetchUser() {
-        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let uid = userId ?? Auth.auth().currentUser?.uid ?? ""
+        
+        //guard let uid = Auth.auth().currentUser?.uid else { return }
         
         Database.fetchUserWithUID(uid: uid) { user in
             self.user = user
@@ -122,6 +121,8 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             self.navigationItem.title = self.user?.username
             
             self.collectionView.reloadData()
+            
+            self.fetchOrderedPosts()
         }
     }
 }

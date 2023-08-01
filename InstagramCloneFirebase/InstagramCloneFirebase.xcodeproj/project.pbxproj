@@ -42,6 +42,7 @@
 		93DEBA782A780E6100A6048F /* Database+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA772A780E6100A6048F /* Database+Extension.swift */; };
 		93DEBA7B2A78E96100A6048F /* UserSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA7A2A78E96100A6048F /* UserSearchController.swift */; };
 		93DEBA7E2A78F21600A6048F /* UserSearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA7D2A78F21600A6048F /* UserSearchCell.swift */; };
+		93DEBA812A793DD500A6048F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA802A793DD500A6048F /* DateExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -79,6 +80,7 @@
 		93DEBA772A780E6100A6048F /* Database+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Database+Extension.swift"; sourceTree = "<group>"; };
 		93DEBA7A2A78E96100A6048F /* UserSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchController.swift; sourceTree = "<group>"; };
 		93DEBA7D2A78F21600A6048F /* UserSearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSearchCell.swift; sourceTree = "<group>"; };
+		93DEBA802A793DD500A6048F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +136,7 @@
 		93B6BDA22A71AB4500F5C3B4 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA7F2A793DC600A6048F /* Date */,
 				93DEBA762A780E4D00A6048F /* Firebase */,
 				93DEBA602A766F8700A6048F /* PhotoSelectorExrensions */,
 				93B6BDC72A743CD700F5C3B4 /* LoginAndSignUpExtensions */,
@@ -327,6 +330,14 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
+		93DEBA7F2A793DC600A6048F /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA802A793DD500A6048F /* DateExtension.swift */,
+			);
+			path = Date;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -422,6 +433,7 @@
 				93DEBA7E2A78F21600A6048F /* UserSearchCell.swift in Sources */,
 				93B6BD8F2A71997300F5C3B4 /* AppDelegate.swift in Sources */,
 				93B6BDD42A765D9500F5C3B4 /* PhotoSelectorHeader.swift in Sources */,
+				93DEBA812A793DD500A6048F /* DateExtension.swift in Sources */,
 				93B6BD912A71997300F5C3B4 /* SceneDelegate.swift in Sources */,
 				93DEBA672A76891800A6048F /* UIViewController+Extensions.swift in Sources */,
 				93B6BDCC2A74630200F5C3B4 /* PhotoSelectorController.swift in Sources */,

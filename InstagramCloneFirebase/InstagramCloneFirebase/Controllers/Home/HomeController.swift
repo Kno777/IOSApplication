@@ -32,6 +32,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             // MARK: - fetch users
             self.fetchPostsWithUser(user: user)
         }
+        
+        //self.collectionView.reloadData()
     }
     
     fileprivate func fetchPostsWithUser(user: User) {
@@ -43,14 +45,13 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
             dictionaries.forEach { (key, value) in
                 
                 guard let dictionary = value as? [String: Any] else { return }
-                                                    
+                
                 let post = UserPostModel(user: user, dictonary: dictionary)
                 
                 self.posts.append(post)
             }
-            
             self.collectionView.reloadData()
-            
+
         } withCancel: { err in
             print("Failed to fetch posts from DB.", err)
         }
@@ -76,7 +77,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAndCell.cellId, for: indexPath) as! HomePostCell
         
-        cell.post = self.posts[indexPath.item]
+        let post = self.posts[indexPath.item]
+        cell.post = post
 
         return cell
     }

@@ -11,15 +11,13 @@ class HomePostCell: UICollectionViewCell {
     
     var post: UserPostModel? {
         didSet {
-            guard let postImageUrl = post?.imageUrl else { return }
+            guard let post = post else { return }
+                        
+            photoImageView.loadImage(urlString: post.imageUrl)
             
-            photoImageView.loadImage(urlString: postImageUrl)
-            
-            usernameLabel.text = self.post?.user.username
-            
-            guard let userProfileImage = self.post?.user.profileImageUrl else { return }
-            
-            userProfileImageView.loadImage(urlString: userProfileImage)
+            usernameLabel.text = post.user.username
+                        
+            userProfileImageView.loadImage(urlString: post.user.profileImageUrl)
             
             //captionLabel.text = post?.caption
             setupAttributedCaption()

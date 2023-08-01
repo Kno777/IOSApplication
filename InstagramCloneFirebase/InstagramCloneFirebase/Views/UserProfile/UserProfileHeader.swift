@@ -17,11 +17,11 @@ class UserProfileHeader: UICollectionViewCell {
             guard let profileImageUrl = user?.profileImageUrl else { return }
             
             profileImageView.loadImage(urlString: profileImageUrl)
-            //setupProfileImage()
             
             usernameLabel.text = user?.username
+            
+            setupEditFollowButton()
         }
-        
     }
     
     private lazy var profileImageView: CustomImageView = {
@@ -101,7 +101,7 @@ class UserProfileHeader: UICollectionViewCell {
          return label
     }()
     
-    private lazy var editProfileButton: UIButton = {
+    private lazy var editProfileFollowButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Edit Profile", for: .normal)
         button.titleLabel?.font = .boldSystemFont(ofSize: 14)
@@ -110,6 +110,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
         button.layer.cornerRadius = 5
+        button.addTarget(self, action: #selector(handelEditProfileOrFollow), for: .touchUpInside)
         return button
     }()
     
@@ -132,6 +133,82 @@ class UserProfileHeader: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    @objc private func handelEditProfileOrFollow() {
+        guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        
+        if editProfileFollowButton.titleLabel?.text == "Edit Profile" {
+            return
+        }
+        
+        if editProfileFollowButton.titleLabel?.text == "Unfollow" {
+            // unfollow logic
+            Database.database().reference().child("following").child(currentLoggedInUserId).child(userId).removeValue { err, ref in
+                if let err = err {
+                    print("Failed to unfollow user: \(self.user?.username ?? "") error: ", err)
+                    return
+                }
+                
+                print("Successfully unfollowed user: ", self.user?.username ?? "")
+                
+                self.setupFollowStyle()
+                
+            }
+        } else {
+            // follow logic
+            let ref = Database.database().reference().child("following").child(currentLoggedInUserId)
+            
+            let values: [String: Any] = [userId: 1]
+            ref.updateChildValues(values) { err, ref in
+                if let err = err {
+                    print("Failed to follow user: ", err)
+                    return
+                }
+                
+                print("Successfully followed user: ", self.user?.username ?? "")
+                
+                self.setupUnFollowStyle()
+            }
+        }
+    }
+    
+    fileprivate func setupUnFollowStyle() {
+        self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
+        self.editProfileFollowButton.backgroundColor = .white
+        self.editProfileFollowButton.setTitleColor(UIColor.black, for: .normal)
+    }
+    
+    fileprivate func setupFollowStyle() {
+        self.editProfileFollowButton.setTitle("Follow", for: .normal)
+        self.editProfileFollowButton.backgroundColor = .singUpButtonDarkBlueColor
+        self.editProfileFollowButton.setTitleColor(UIColor.white, for: .normal)
+    }
+    
+    fileprivate func setupEditFollowButton() {
+        
+        guard let currentLoggedInUserId = Auth.auth().currentUser?.uid else { return }
+        
+        guard let userId = user?.uid else { return }
+        
+        if currentLoggedInUserId == userId {
+            editProfileFollowButton.setTitle("Edit Profile", for: .normal)
+        } else {
+            // check if following
+            let ref = Database.database().reference().child("following").child(currentLoggedInUserId).child(userId)
+            
+            ref.observeSingleEvent(of: .value) { snapshot in
+                if let isFollowing = snapshot.value as? Int, isFollowing == 1 {
+                    self.editProfileFollowButton.setTitle("Unfollow", for: .normal)
+                } else {
+                    self.setupFollowStyle()
+                }
+            } withCancel: { err in
+                print("Failed to check if following: ", err)
+            }
+        }
+    }
+    
     fileprivate func setupUserStatsView() {
         let stackView = UIStackView(arrangedSubviews: [postsLabel, followersLabel, followingLabel])
         
@@ -139,11 +216,11 @@ class UserProfileHeader: UICollectionViewCell {
         stackView.distribution = .fillEqually
         
         addSubview(stackView)
-        addSubview(editProfileButton)
+        addSubview(editProfileFollowButton)
         
         stackView.anchor(top: safeAreaLayoutGuide.topAnchor, left: profileImageView.trailingAnchor, bottom: nil, right: safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 12, paddingBottom: 0, paddingRight: -12, width: 0, height: 50)
         
-        editProfileButton.anchor(top: stackView.bottomAnchor, left: postsLabel.leadingAnchor, bottom: nil, right: followingLabel.trailingAnchor, paddingTop: 4, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 34)
+        editProfileFollowButton.anchor(top: stackView.bottomAnchor, left: postsLabel.leadingAnchor, bottom: nil, right: followingLabel.trailingAnchor, paddingTop: 4, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 34)
     }
     
     fileprivate func setupBottomToolBar() {
@@ -175,18 +252,6 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     fileprivate func setupProfileImage() {
-        
-//        guard let uid = Auth.auth().currentUser?.uid else { return }
-//
-//        Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value) { snapshot in
-//
-//            guard let dictionary = snapshot.value as? [String: Any] else { return }
-//
-//            let _ = dictionary["username"] as? String
-//
-//        } withCancel: { err in
-//            print("Failed to fetch user: ", err)
-//        }
         
         guard let profileImageUrl = user?.profileImageUrl else { return }
         

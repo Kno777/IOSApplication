@@ -33,6 +33,14 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         self.collectionView.refreshControl = refreshController
     }
     
+    @objc private func handelCamera() {
+        print("Showing camera...")
+        
+        let cameraController = CameraController()
+        cameraController.modalPresentationStyle = .fullScreen
+        present(cameraController, animated: true)
+    }
+    
     // MARK: - update home feed autommatically using NSNotification
     @objc private func handelUpdateFeed() {
         handelRefreshPosts()
@@ -108,5 +116,7 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     
     fileprivate func setupNaviagtionItems() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo2"))
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(named: "camera3")?.withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handelCamera))
     }
 }

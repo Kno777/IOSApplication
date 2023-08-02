@@ -45,6 +45,7 @@
 		93DEBA812A793DD500A6048F /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA802A793DD500A6048F /* DateExtension.swift */; };
 		93DEBA842A7A42D400A6048F /* HomeController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA832A7A42D400A6048F /* HomeController+Extension.swift */; };
 		93DEBA872A7A442B00A6048F /* SearchController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA862A7A442B00A6048F /* SearchController+Extension.swift */; };
+		93DEBA8A2A7A4CA500A6048F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA892A7A4CA500A6048F /* CameraController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -85,6 +86,7 @@
 		93DEBA802A793DD500A6048F /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		93DEBA832A7A42D400A6048F /* HomeController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+Extension.swift"; sourceTree = "<group>"; };
 		93DEBA862A7A442B00A6048F /* SearchController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchController+Extension.swift"; sourceTree = "<group>"; };
+		93DEBA892A7A4CA500A6048F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -166,6 +168,7 @@
 		93B6BDB32A72E60B00F5C3B4 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA882A7A4C9500A6048F /* Camera */,
 				93DEBA792A78E94800A6048F /* Search */,
 				93DEBA702A77BE5400A6048F /* Home */,
 				93DEBA682A7798AE00A6048F /* UserProfile */,
@@ -360,6 +363,14 @@
 			path = SearchControllerExtensions;
 			sourceTree = "<group>";
 		};
+		93DEBA882A7A4C9500A6048F /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA892A7A4CA500A6048F /* CameraController.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -470,6 +481,7 @@
 				93DEBA782A780E6100A6048F /* Database+Extension.swift in Sources */,
 				93DEBA6D2A77A06E00A6048F /* UserProfilePostsCell.swift in Sources */,
 				93DEBA622A766FA700A6048F /* PhotoSelectorController+Extension.swift in Sources */,
+				93DEBA8A2A7A4CA500A6048F /* CameraController.swift in Sources */,
 				93DEBA752A77C0D800A6048F /* HomePostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

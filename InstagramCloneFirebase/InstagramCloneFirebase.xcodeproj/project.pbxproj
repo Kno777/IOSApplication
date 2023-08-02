@@ -47,6 +47,8 @@
 		93DEBA872A7A442B00A6048F /* SearchController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA862A7A442B00A6048F /* SearchController+Extension.swift */; };
 		93DEBA8A2A7A4CA500A6048F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA892A7A4CA500A6048F /* CameraController.swift */; };
 		93DEBA8D2A7A70A900A6048F /* PreviewImageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA8C2A7A70A900A6048F /* PreviewImageContainerView.swift */; };
+		93DEBA902A7A913400A6048F /* CustomAnimationPresentor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA8F2A7A913400A6048F /* CustomAnimationPresentor.swift */; };
+		93DEBA922A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA912A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -89,6 +91,8 @@
 		93DEBA862A7A442B00A6048F /* SearchController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchController+Extension.swift"; sourceTree = "<group>"; };
 		93DEBA892A7A4CA500A6048F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
 		93DEBA8C2A7A70A900A6048F /* PreviewImageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageContainerView.swift; sourceTree = "<group>"; };
+		93DEBA8F2A7A913400A6048F /* CustomAnimationPresentor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationPresentor.swift; sourceTree = "<group>"; };
+		93DEBA912A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationTransitionDismisser.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -377,9 +381,19 @@
 		93DEBA8B2A7A708D00A6048F /* Camera */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA8E2A7A911900A6048F /* CustomAnimation */,
 				93DEBA8C2A7A70A900A6048F /* PreviewImageContainerView.swift */,
 			);
 			path = Camera;
+			sourceTree = "<group>";
+		};
+		93DEBA8E2A7A911900A6048F /* CustomAnimation */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA8F2A7A913400A6048F /* CustomAnimationPresentor.swift */,
+				93DEBA912A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift */,
+			);
+			path = CustomAnimation;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -464,6 +478,7 @@
 			files = (
 				93B6BDC62A743B7800F5C3B4 /* UserProfileController+Extension.swift in Sources */,
 				93B6BDA92A71AF4900F5C3B4 /* UIViewExtension.swift in Sources */,
+				93DEBA922A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift in Sources */,
 				93DEBA6F2A77AD5900A6048F /* CustomImageView.swift in Sources */,
 				93B6BD932A71997300F5C3B4 /* SignUpController.swift in Sources */,
 				93DEBA6B2A779D1D00A6048F /* UserPostModel.swift in Sources */,
@@ -488,6 +503,7 @@
 				93B6BDBD2A740C5600F5C3B4 /* LoginController.swift in Sources */,
 				93B6BDD22A754D1200F5C3B4 /* PhotoSelectorCell.swift in Sources */,
 				93B6BDC92A743CF200F5C3B4 /* SignUpControllerExtension.swift in Sources */,
+				93DEBA902A7A913400A6048F /* CustomAnimationPresentor.swift in Sources */,
 				93DEBA722A77BE6400A6048F /* HomeController.swift in Sources */,
 				93B6BDC32A743B2F00F5C3B4 /* UserModel.swift in Sources */,
 				93DEBA782A780E6100A6048F /* Database+Extension.swift in Sources */,

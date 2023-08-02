@@ -8,8 +8,11 @@
 import UIKit
 import AVFoundation
 
-class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
+class CameraController: UIViewController, AVCapturePhotoCaptureDelegate, UIViewControllerTransitioningDelegate {
+    
     private let output = AVCapturePhotoOutput()
+    private let customAnimationPresentor = CustomAnimationPresentor()
+    private let customAnimationDismisser = CustomAnimationTransitionDismisser()
     
     private lazy var capturePhotoButton: UIButton = {
         let button = UIButton(type: .system)
@@ -30,10 +33,23 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // create custom transition camera
+        transitioningDelegate = self
+        
         setupCaptureSession()
         
         setupCameraButtons()
         
+    }
+    
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationPresentor
+    }
+    
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        return customAnimationDismisser
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -65,12 +81,6 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         view.addSubview(conatinerView)
         
         conatinerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
-        
-//        let previewImageView = UIImageView(image: previewImage)
-//        previewImageView.translatesAutoresizingMaskIntoConstraints = false
-//        view.addSubview(previewImageView)
-//
-//        previewImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         print("Finished capture photo")
     }

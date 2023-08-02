@@ -9,11 +9,11 @@ import UIKit
 
 struct UserPostModel {
     let imageUrl: String
-    let user: User
+    let user: UserModel
     let caption: String
     let creationDate: Date
     
-    init(user: User, dictonary: [String: Any]) {
+    init(user: UserModel, dictonary: [String: Any]) {
         self.imageUrl = dictonary["imageUrl"] as? String ?? ""
         self.caption = dictonary["postText"] as? String ?? ""
         self.user = user

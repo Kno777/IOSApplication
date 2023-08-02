@@ -12,3 +12,7 @@ enum HeaderAndCell {
     
     static let headerId = "headerId"
 }
+
+enum NotificationCenterForUpdateHomeFeed {
+    static let name = "UpdateFeed"
+}

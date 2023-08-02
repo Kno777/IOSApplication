@@ -10,7 +10,7 @@ import Firebase
 
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var user: User?
+    var user: UserModel?
     var posts: [UserPostModel] = []
     var userId: String?
     

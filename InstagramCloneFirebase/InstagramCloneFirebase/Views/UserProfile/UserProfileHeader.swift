@@ -10,7 +10,7 @@ import Firebase
 
 class UserProfileHeader: UICollectionViewCell {
     
-    var user: User? {
+    var user: UserModel? {
         didSet {
             print("Did set", user?.username ?? "")
             

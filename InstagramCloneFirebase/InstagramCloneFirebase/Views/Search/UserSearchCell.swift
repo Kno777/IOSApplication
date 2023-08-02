@@ -9,7 +9,7 @@ import UIKit
 
 class UserSearchCell: UICollectionViewCell {
     
-    var user: User? {
+    var user: UserModel? {
         didSet {
             guard let user = user else { return }
             
@@ -19,7 +19,6 @@ class UserSearchCell: UICollectionViewCell {
             
         }
     }
-    
     
    private lazy var userProfileImageView: CustomImageView = {
        let image = CustomImageView()

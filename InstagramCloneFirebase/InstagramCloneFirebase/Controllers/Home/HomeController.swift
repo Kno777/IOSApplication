@@ -15,14 +15,37 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // MARK: - Notification Center for update home feed
+        let name = NSNotification.Name(rawValue: NotificationCenterForUpdateHomeFeed.name)
+        NotificationCenter.default.addObserver(self, selector: #selector(handelUpdateFeed), name: name, object: nil)
+        
         collectionView.backgroundColor = .white
         
         collectionView.register(HomePostCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
         
         setupNaviagtionItems()
         
-        fetchPosts()
+        fetchAllPosts()
         
+        let refreshController = UIRefreshControl()
+        refreshController.tintColor = .black
+        refreshController.addTarget(self, action: #selector(handelRefreshPosts), for: .valueChanged)
+        self.collectionView.refreshControl = refreshController
+    }
+    
+    // MARK: - update home feed autommatically using NSNotification
+    @objc private func handelUpdateFeed() {
+        handelRefreshPosts()
+    }
+    
+    @objc private func handelRefreshPosts() {
+        fetchAllPosts()
+    }
+    
+    fileprivate func fetchAllPosts() {
+        posts.removeAll()
+        
+        fetchPosts()
         fetchUsersPostsByFollowingIds()
     }
     
@@ -55,10 +78,12 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
         }
     }
     
-    fileprivate func fetchPostsWithUser(user: User) {
+    fileprivate func fetchPostsWithUser(user: UserModel) {
         // MARK: - fetch posts
         Database.database().reference().child("posts").child(user.uid).observeSingleEvent(of: .value) { snapshot in
-            
+                        
+            self.collectionView.refreshControl?.endRefreshing()
+
             guard let dictionaries = snapshot.value as? [String: Any] else { return }
 
             dictionaries.forEach { (key, value) in
@@ -84,27 +109,4 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     fileprivate func setupNaviagtionItems() {
         navigationItem.titleView = UIImageView(image: UIImage(named: "logo2"))
     }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        var height: CGFloat = 40 + 8 + 8 // usernameLable and userProfileImageView
-        height += view.frame.width
-        height += 50 // photoImage bottom toolbar
-        height += 60 // username + post text and when posted // creation date
-        return CGSize(width: view.frame.width, height: height)
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.posts.count
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAndCell.cellId, for: indexPath) as! HomePostCell
-        
-        let post = self.posts[indexPath.item]
-        cell.post = post
-
-        return cell
-    }
-    
 }

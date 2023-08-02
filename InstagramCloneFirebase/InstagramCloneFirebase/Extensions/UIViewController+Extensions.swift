@@ -8,7 +8,5 @@
 import UIKit
 
 extension UIViewController {
-    var prefersStatusBarHidden: Bool {
-        return true
-    }
+    
 }

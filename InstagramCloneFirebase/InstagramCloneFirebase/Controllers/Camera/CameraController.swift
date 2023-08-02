@@ -59,11 +59,18 @@ class CameraController: UIViewController, AVCapturePhotoCaptureDelegate {
         
         let previewImage = UIImage(data: imageData)
         
-        let previewImageView = UIImageView(image: previewImage)
-        previewImageView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(previewImageView)
+        let conatinerView = PreviewImageContainerView()
+        conatinerView.translatesAutoresizingMaskIntoConstraints = false
+        conatinerView.previewImageView.image = previewImage
+        view.addSubview(conatinerView)
         
-        previewImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        conatinerView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+        
+//        let previewImageView = UIImageView(image: previewImage)
+//        previewImageView.translatesAutoresizingMaskIntoConstraints = false
+//        view.addSubview(previewImageView)
+//
+//        previewImageView.anchor(top: view.safeAreaLayoutGuide.topAnchor, left: view.safeAreaLayoutGuide.leadingAnchor, bottom: view.safeAreaLayoutGuide.bottomAnchor, right: view.safeAreaLayoutGuide.trailingAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         print("Finished capture photo")
     }

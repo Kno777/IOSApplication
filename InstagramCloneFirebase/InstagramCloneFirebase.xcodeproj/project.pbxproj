@@ -46,6 +46,7 @@
 		93DEBA842A7A42D400A6048F /* HomeController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA832A7A42D400A6048F /* HomeController+Extension.swift */; };
 		93DEBA872A7A442B00A6048F /* SearchController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA862A7A442B00A6048F /* SearchController+Extension.swift */; };
 		93DEBA8A2A7A4CA500A6048F /* CameraController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA892A7A4CA500A6048F /* CameraController.swift */; };
+		93DEBA8D2A7A70A900A6048F /* PreviewImageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA8C2A7A70A900A6048F /* PreviewImageContainerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -87,6 +88,7 @@
 		93DEBA832A7A42D400A6048F /* HomeController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HomeController+Extension.swift"; sourceTree = "<group>"; };
 		93DEBA862A7A442B00A6048F /* SearchController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SearchController+Extension.swift"; sourceTree = "<group>"; };
 		93DEBA892A7A4CA500A6048F /* CameraController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraController.swift; sourceTree = "<group>"; };
+		93DEBA8C2A7A70A900A6048F /* PreviewImageContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewImageContainerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 		93B6BDB82A73175C00F5C3B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA8B2A7A708D00A6048F /* Camera */,
 				93DEBA7C2A78F20500A6048F /* Search */,
 				93DEBA732A77C0BE00A6048F /* Home */,
 				93B6BDD02A754CF800F5C3B4 /* AddPhoto */,
@@ -371,6 +374,14 @@
 			path = Camera;
 			sourceTree = "<group>";
 		};
+		93DEBA8B2A7A708D00A6048F /* Camera */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA8C2A7A70A900A6048F /* PreviewImageContainerView.swift */,
+			);
+			path = Camera;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,6 +474,7 @@
 				93B6BDCF2A746B4800F5C3B4 /* Utils.swift in Sources */,
 				93DEBA842A7A42D400A6048F /* HomeController+Extension.swift in Sources */,
 				93B6BDA72A71ACDF00F5C3B4 /* UITextField+pleacholder.swift in Sources */,
+				93DEBA8D2A7A70A900A6048F /* PreviewImageContainerView.swift in Sources */,
 				93DEBA872A7A442B00A6048F /* SearchController+Extension.swift in Sources */,
 				93B6BDB52A72E62400F5C3B4 /* MainTabBarController.swift in Sources */,
 				93DEBA7E2A78F21600A6048F /* UserSearchCell.swift in Sources */,

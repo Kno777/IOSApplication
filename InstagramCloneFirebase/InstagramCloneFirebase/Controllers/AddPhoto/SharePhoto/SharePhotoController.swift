@@ -130,8 +130,18 @@ class SharePhotoController: UIViewController {
             print("Successfully save post to database.")
             self.dismiss(animated: true)
             
+            // MARK: - Notification Center
             let name = NSNotification.Name(rawValue: NotificationCenterForUpdateHomeFeed.name)
             NotificationCenter.default.post(name: name, object: nil)
+            
+            // MARK: - switch the first tab item after share content
+            if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+               let sceneDelegate = windowScene.delegate as? SceneDelegate {
+                if let tabBarController = sceneDelegate.window?.rootViewController as? UITabBarController {
+                    
+                    tabBarController.selectedIndex = 0
+                }
+            }
         }
     }
 }

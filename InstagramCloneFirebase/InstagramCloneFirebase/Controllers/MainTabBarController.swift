@@ -33,7 +33,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         self.delegate = self
         
         view.backgroundColor = .systemBackground
-        
+                
         if Auth.auth().currentUser == nil {
             // show if user is not logged in
             

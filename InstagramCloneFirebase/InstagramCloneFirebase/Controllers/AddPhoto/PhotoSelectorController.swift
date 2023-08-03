@@ -32,6 +32,15 @@ class PhotoSelectorController: UICollectionViewController, UICollectionViewDeleg
     
     @objc private func handelCancel() {
         dismiss(animated: true)
+        
+        // MARK: - switch the first tab item after click cancel
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let sceneDelegate = windowScene.delegate as? SceneDelegate {
+            if let tabBarController = sceneDelegate.window?.rootViewController as? UITabBarController {
+                
+                tabBarController.selectedIndex = 0
+            }
+        }
     }
     
     @objc private func handelNext() {

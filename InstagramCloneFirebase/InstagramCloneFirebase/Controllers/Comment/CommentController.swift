@@ -8,9 +8,10 @@
 import UIKit
 import Firebase
 
-class CommentController: UICollectionViewController {
+class CommentController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var post: UserPostModel?
+    var comments: [CommentModel] = []
     
     lazy var containerView: UIView = {
         let containerView = UIView()
@@ -66,6 +67,10 @@ class CommentController: UICollectionViewController {
         
         navigationItem.title = "Comments"
         collectionView.backgroundColor = .systemPink
+        
+        collectionView.register(CommentCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
+        
+        fetchComments()
 
     }
     
@@ -87,5 +92,45 @@ class CommentController: UICollectionViewController {
     
     override var canBecomeFirstResponder: Bool {
         return true
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return self.comments.count
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAndCell.cellId, for: indexPath) as! CommentCell
+        
+        cell.comment = self.comments[indexPath.item]
+        
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        return CGSize(width: view.frame.width, height: 50)
+    }
+    
+    fileprivate func fetchComments() {
+        
+        guard let postId = post?.id else { return }
+        
+        let ref = Database.database().reference().child("comments").child(postId)
+        
+        ref.observe(.childAdded) { snapshot in
+            
+            guard let dictionaryComment = snapshot.value as? [String: Any] else { return }
+            
+            let comment = CommentModel(dictionary: dictionaryComment)
+                        
+            self.comments.append(comment)
+            
+            self.collectionView.reloadData()
+            
+            
+        } withCancel: { err in
+            print("Failed to fetch comments: ", err)
+        }
     }
 }

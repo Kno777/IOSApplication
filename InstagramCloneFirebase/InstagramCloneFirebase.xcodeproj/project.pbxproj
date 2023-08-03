@@ -52,6 +52,8 @@
 		93DEBA952A7B8ABE00A6048F /* HomePostCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA942A7B8ABE00A6048F /* HomePostCellDelegate.swift */; };
 		93DEBA982A7B8E1200A6048F /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA972A7B8E1200A6048F /* CommentController.swift */; };
 		93DEBA9A2A7B989300A6048F /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA992A7B989300A6048F /* CustomInputAccessoryView.swift */; };
+		93DEBA9D2A7BE05B00A6048F /* CommentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA9C2A7BE05B00A6048F /* CommentCell.swift */; };
+		93DEBAA02A7BE81200A6048F /* CommentModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA9F2A7BE81200A6048F /* CommentModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -99,6 +101,8 @@
 		93DEBA942A7B8ABE00A6048F /* HomePostCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCellDelegate.swift; sourceTree = "<group>"; };
 		93DEBA972A7B8E1200A6048F /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
 		93DEBA992A7B989300A6048F /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
+		93DEBA9C2A7BE05B00A6048F /* CommentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCell.swift; sourceTree = "<group>"; };
+		93DEBA9F2A7BE81200A6048F /* CommentModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +201,7 @@
 		93B6BDB82A73175C00F5C3B4 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA9B2A7BE04D00A6048F /* Comments */,
 				93DEBA8B2A7A708D00A6048F /* Camera */,
 				93DEBA7C2A78F20500A6048F /* Search */,
 				93DEBA732A77C0BE00A6048F /* Home */,
@@ -227,6 +232,7 @@
 		93B6BDBF2A743AFA00F5C3B4 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				93DEBA9E2A7BE7FE00A6048F /* PostCommentModel */,
 				93DEBA692A779D0300A6048F /* UserPostModel */,
 				93B6BDC12A743B1300F5C3B4 /* UserProfileModel */,
 			);
@@ -421,6 +427,22 @@
 			path = Comment;
 			sourceTree = "<group>";
 		};
+		93DEBA9B2A7BE04D00A6048F /* Comments */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA9C2A7BE05B00A6048F /* CommentCell.swift */,
+			);
+			path = Comments;
+			sourceTree = "<group>";
+		};
+		93DEBA9E2A7BE7FE00A6048F /* PostCommentModel */ = {
+			isa = PBXGroup;
+			children = (
+				93DEBA9F2A7BE81200A6048F /* CommentModel.swift */,
+			);
+			path = PostCommentModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -518,6 +540,7 @@
 				93DEBA8D2A7A70A900A6048F /* PreviewImageContainerView.swift in Sources */,
 				93DEBA872A7A442B00A6048F /* SearchController+Extension.swift in Sources */,
 				93B6BDB52A72E62400F5C3B4 /* MainTabBarController.swift in Sources */,
+				93DEBAA02A7BE81200A6048F /* CommentModel.swift in Sources */,
 				93DEBA7E2A78F21600A6048F /* UserSearchCell.swift in Sources */,
 				93B6BD8F2A71997300F5C3B4 /* AppDelegate.swift in Sources */,
 				93B6BDD42A765D9500F5C3B4 /* PhotoSelectorHeader.swift in Sources */,
@@ -527,6 +550,7 @@
 				93DEBA672A76891800A6048F /* UIViewController+Extensions.swift in Sources */,
 				93B6BDCC2A74630200F5C3B4 /* PhotoSelectorController.swift in Sources */,
 				93B6BDA42A71AB5B00F5C3B4 /* UIColorExtension.swift in Sources */,
+				93DEBA9D2A7BE05B00A6048F /* CommentCell.swift in Sources */,
 				93B6BDBD2A740C5600F5C3B4 /* LoginController.swift in Sources */,
 				93B6BDD22A754D1200F5C3B4 /* PhotoSelectorCell.swift in Sources */,
 				93B6BDC92A743CF200F5C3B4 /* SignUpControllerExtension.swift in Sources */,

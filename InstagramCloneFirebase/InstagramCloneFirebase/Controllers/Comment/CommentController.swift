@@ -66,7 +66,9 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
         super.viewDidLoad()
         
         navigationItem.title = "Comments"
-        collectionView.backgroundColor = .systemPink
+        collectionView.backgroundColor = .white
+        collectionView.alwaysBounceVertical = true
+        collectionView.keyboardDismissMode = .interactive
         
         collectionView.register(CommentCell.self, forCellWithReuseIdentifier: HeaderAndCell.cellId)
         
@@ -109,7 +111,21 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.width, height: 50)
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        
+        let dummyCell = CommentCell(frame: frame)
+        dummyCell.comment = self.comments[indexPath.item]
+        dummyCell.layoutIfNeeded()
+        
+        let targetSize = CGSize(width: view.frame.width, height: 1000)
+        let estimatedSize = dummyCell.systemLayoutSizeFitting(targetSize)
+        
+        let height = max(40 + 8 + 8, estimatedSize.height)
+        return CGSize(width: view.frame.width, height: height)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return 0
     }
     
     fileprivate func fetchComments() {
@@ -122,11 +138,16 @@ class CommentController: UICollectionViewController, UICollectionViewDelegateFlo
             
             guard let dictionaryComment = snapshot.value as? [String: Any] else { return }
             
-            let comment = CommentModel(dictionary: dictionaryComment)
-                        
-            self.comments.append(comment)
+            guard let uid = dictionaryComment["uid"] as? String else { return }
             
-            self.collectionView.reloadData()
+            Database.fetchUserWithUID(uid: uid) { user in
+                
+                let comment = CommentModel(user: user, dictionary: dictionaryComment)
+                            
+                self.comments.append(comment)
+                
+                self.collectionView.reloadData()
+            }
             
             
         } withCancel: { err in

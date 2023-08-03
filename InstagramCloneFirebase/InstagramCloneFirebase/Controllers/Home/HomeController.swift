@@ -13,7 +13,11 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
     func didTapComment(post: UserPostModel) {
         print("Comments called from HomeController")
         print("post: ", post.caption)
+        
         let commentController = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        
+        commentController.post = post
+        
         navigationController?.pushViewController(commentController, animated: true)
     }
     
@@ -106,7 +110,8 @@ class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLa
                 
                 guard let dictionary = value as? [String: Any] else { return }
                 
-                let post = UserPostModel(user: user, dictonary: dictionary)
+                var post = UserPostModel(user: user, dictonary: dictionary)
+                post.id = key
                 
                 self.posts.append(post)
             }

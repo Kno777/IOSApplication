@@ -8,6 +8,7 @@
 import UIKit
 
 struct UserPostModel {
+    var id: String?
     let imageUrl: String
     let user: UserModel
     let caption: String

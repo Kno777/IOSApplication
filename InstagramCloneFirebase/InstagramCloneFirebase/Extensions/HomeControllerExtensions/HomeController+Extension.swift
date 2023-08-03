@@ -26,6 +26,8 @@ extension HomeController {
         
         if posts.count > 0 {
             cell.post = posts[indexPath.item]
+            
+            cell.delegate = self
         }
 
         return cell

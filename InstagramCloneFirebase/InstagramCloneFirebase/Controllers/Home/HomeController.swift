@@ -8,7 +8,15 @@
 import UIKit
 import Firebase
 
-class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+class HomeController: UICollectionViewController, UICollectionViewDelegateFlowLayout, HomePostCellDelegate {
+    
+    func didTapComment(post: UserPostModel) {
+        print("Comments called from HomeController")
+        print("post: ", post.caption)
+        let commentController = CommentController(collectionViewLayout: UICollectionViewFlowLayout())
+        navigationController?.pushViewController(commentController, animated: true)
+    }
+    
     
     var posts: [UserPostModel] = []
     

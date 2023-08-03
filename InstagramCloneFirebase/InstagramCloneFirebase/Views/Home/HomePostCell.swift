@@ -9,6 +9,8 @@ import UIKit
 
 class HomePostCell: UICollectionViewCell {
     
+    weak var delegate: HomePostCellDelegate?
+    
     var post: UserPostModel? {
         didSet {
             guard let post = post else { return }
@@ -69,6 +71,7 @@ class HomePostCell: UICollectionViewCell {
        let button = UIButton()
         button.setImage(UIImage(named: "comment")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handelComment), for: .touchUpInside)
         return button
     }()
     
@@ -115,6 +118,12 @@ class HomePostCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func handelComment() {
+        print("adding comment...")
+        guard let post = self.post else { return }
+        delegate?.didTapComment(post: post)
     }
     
     fileprivate func setupAttributedCaption() {

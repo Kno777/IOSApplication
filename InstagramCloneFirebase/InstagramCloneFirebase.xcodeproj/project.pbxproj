@@ -51,6 +51,7 @@
 		93DEBA922A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA912A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift */; };
 		93DEBA952A7B8ABE00A6048F /* HomePostCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA942A7B8ABE00A6048F /* HomePostCellDelegate.swift */; };
 		93DEBA982A7B8E1200A6048F /* CommentController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA972A7B8E1200A6048F /* CommentController.swift */; };
+		93DEBA9A2A7B989300A6048F /* CustomInputAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 93DEBA992A7B989300A6048F /* CustomInputAccessoryView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -97,6 +98,7 @@
 		93DEBA912A7A99B700A6048F /* CustomAnimationTransitionDismisser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnimationTransitionDismisser.swift; sourceTree = "<group>"; };
 		93DEBA942A7B8ABE00A6048F /* HomePostCellDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomePostCellDelegate.swift; sourceTree = "<group>"; };
 		93DEBA972A7B8E1200A6048F /* CommentController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentController.swift; sourceTree = "<group>"; };
+		93DEBA992A7B989300A6048F /* CustomInputAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputAccessoryView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -172,6 +174,7 @@
 			children = (
 				93B6BDA62A71ACDF00F5C3B4 /* UITextField+pleacholder.swift */,
 				93DEBA6E2A77AD5900A6048F /* CustomImageView.swift */,
+				93DEBA992A7B989300A6048F /* CustomInputAccessoryView.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -509,6 +512,7 @@
 				93DEBA7B2A78E96100A6048F /* UserSearchController.swift in Sources */,
 				93B6BDBB2A73177300F5C3B4 /* UserProfileHeader.swift in Sources */,
 				93B6BDCF2A746B4800F5C3B4 /* Utils.swift in Sources */,
+				93DEBA9A2A7B989300A6048F /* CustomInputAccessoryView.swift in Sources */,
 				93DEBA842A7A42D400A6048F /* HomeController+Extension.swift in Sources */,
 				93B6BDA72A71ACDF00F5C3B4 /* UITextField+pleacholder.swift in Sources */,
 				93DEBA8D2A7A70A900A6048F /* PreviewImageContainerView.swift in Sources */,

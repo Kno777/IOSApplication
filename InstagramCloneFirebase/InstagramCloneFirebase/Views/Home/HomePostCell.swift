@@ -14,6 +14,8 @@ class HomePostCell: UICollectionViewCell {
     var post: UserPostModel? {
         didSet {
             guard let post = post else { return }
+            
+            likeButton.setImage(post.hasLiked == true ? UIImage(named: "like_selected") : UIImage(named: "like_unselected"), for: .normal)
                         
             photoImageView.loadImage(urlString: post.imageUrl)
             
@@ -64,6 +66,7 @@ class HomePostCell: UICollectionViewCell {
        let button = UIButton()
         button.setImage(UIImage(named: "like_unselected")?.withRenderingMode(.alwaysOriginal), for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(handelLike), for: .touchUpInside)
         return button
     }()
     
@@ -118,6 +121,12 @@ class HomePostCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func handelLike() {
+        print("Handling like...")
+        delegate?.didTapLike(for: self)
+        
     }
     
     @objc private func handelComment() {

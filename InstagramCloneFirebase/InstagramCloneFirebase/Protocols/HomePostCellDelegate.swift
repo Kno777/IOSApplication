@@ -9,4 +9,5 @@ import UIKit
 
 protocol HomePostCellDelegate: AnyObject {
     func didTapComment(post: UserPostModel)
+    func didTapLike(for cell: HomePostCell)
 }

@@ -14,6 +14,8 @@ struct UserPostModel {
     let caption: String
     let creationDate: Date
     
+    var hasLiked: Bool = false
+    
     init(user: UserModel, dictonary: [String: Any]) {
         self.imageUrl = dictonary["imageUrl"] as? String ?? ""
         self.caption = dictonary["postText"] as? String ?? ""

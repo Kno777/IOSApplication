@@ -14,6 +14,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     var posts: [UserPostModel] = []
     var userId: String?
     var isGridView: Bool = true
+    var isFinishedPaging: Bool = false
     
     func didChangeToListView() {
         isGridView = false
@@ -69,6 +70,56 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         present(alertController, animated: true)
     }
     
+    func paginatePosts() {
+        print("Start paging for more posts")
+        
+        guard let uid = self.user?.uid else { return }
+        let ref = Database.database().reference().child("posts").child(uid)
+        
+        var query = ref.queryOrderedByKey()
+        
+        if self.posts.count > 0 {
+            let values = self.posts.last?.id
+            
+            query = query.queryStarting(atValue: values)
+        }
+        
+        query.queryLimited(toFirst: 4).observeSingleEvent(of: .value) { snapshot in
+            
+            guard let user = self.user else { return }
+            
+            guard var allObject = snapshot.children.allObjects as? [DataSnapshot] else { return }
+            
+            if allObject.count < 4 {
+                self.isFinishedPaging = true
+            }
+            
+            if self.posts.count > 0 {
+                allObject.removeFirst()
+            }
+            
+            allObject.forEach({ snapshot in
+                
+                guard let dictionary = snapshot.value as? [String: Any] else { return }
+                                
+                var post = UserPostModel(user: user, dictonary: dictionary)
+                post.id = snapshot.key
+                
+                self.posts.append(post)
+            })
+            
+            self.posts.forEach { post in
+                print(post.id ?? "")
+            }
+            
+            self.collectionView.reloadData()
+            
+        } withCancel: { err in
+            print("Failed to fetch user posts.", err)
+            return
+        }
+    }
+    
     fileprivate func fetchOrderedPosts() {
         guard let uid = user?.uid else { return }
         
@@ -92,43 +143,10 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         }
     }
     
-    fileprivate func fetchPosts() {
-        
-        guard let uid = Auth.auth().currentUser?.uid else { return }
-        
-        Database.database().reference().child("posts").child(uid).observeSingleEvent(of: .value) { snapshot in
-            
-            guard let dictionaries = snapshot.value as? [String: Any] else { return }
-
-            dictionaries.forEach { (key, value) in
-                
-                guard let dictionary = value as? [String: Any] else { return }
-                
-                guard let user = self.user else { return }
-                                
-                let post = UserPostModel(user: user, dictonary: dictionary)
-                
-                self.posts.append(post)
-
-            }
-            
-            self.collectionView.reloadData()
-            
-        } withCancel: { err in
-            print("Failed to fetch posts from DB.", err)
-        }
-    }
-    
-    fileprivate func setupLogOutButton() {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"), style: .plain, target: self, action: #selector(handelLogOut))
-    }
-    
     fileprivate func fetchUser() {
         
         let uid = userId ?? Auth.auth().currentUser?.uid ?? ""
-        
-        //guard let uid = Auth.auth().currentUser?.uid else { return }
-        
+                
         Database.fetchUserWithUID(uid: uid) { user in
             self.user = user
             
@@ -136,7 +154,12 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
             
             self.collectionView.reloadData()
             
-            self.fetchOrderedPosts()
+            //self.fetchOrderedPosts()
+            self.paginatePosts()
         }
+    }
+    
+    fileprivate func setupLogOutButton() {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(named: "gear"), style: .plain, target: self, action: #selector(handelLogOut))
     }
 }

@@ -8,7 +8,14 @@
 import UIKit
 import Firebase
 
+protocol UserProfileHeaderDelegate {
+    func didChangeToListView()
+    func didChangeToGridView()
+}
+
 class UserProfileHeader: UICollectionViewCell {
+    
+    var delegate: UserProfileHeaderDelegate?
     
     var user: UserModel? {
         didSet {
@@ -35,7 +42,8 @@ class UserProfileHeader: UICollectionViewCell {
     private lazy var gridButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "grid"), for: .normal)
-        button.tintColor = UIColor(white: 0, alpha: 0.3)
+        //button.tintColor = UIColor(white: 0, alpha: 0.3)
+        button.addTarget(self, action: #selector(handleChangeToGridView), for: .touchUpInside)
         return button
     }()
     
@@ -43,6 +51,7 @@ class UserProfileHeader: UICollectionViewCell {
         let button = UIButton(type: .system)
         button.setImage(UIImage(named: "list"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.3)
+        button.addTarget(self, action: #selector(handleChangeToListView), for: .touchUpInside)
         return button
     }()
     
@@ -131,6 +140,18 @@ class UserProfileHeader: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    @objc private func handleChangeToGridView() {
+        listButton.tintColor = UIColor(white: 0, alpha: 0.3)
+        gridButton.tintColor = .singUpButtonDarkBlueColor
+        delegate?.didChangeToGridView()
+    }
+    
+    @objc private func handleChangeToListView() {
+        listButton.tintColor = .singUpButtonDarkBlueColor
+        gridButton.tintColor = UIColor(white: 0, alpha: 0.3)
+        delegate?.didChangeToListView()
     }
     
     @objc private func handelEditProfileOrFollow() {

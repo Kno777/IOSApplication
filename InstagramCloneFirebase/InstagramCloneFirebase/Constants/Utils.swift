@@ -10,6 +10,8 @@ import UIKit
 enum HeaderAndCell {
     static let cellId = "cellId"
     
+    static let homePostCellIdForUserProfileListView = "homePostCellId"
+    
     static let headerId = "headerId"
 }
 

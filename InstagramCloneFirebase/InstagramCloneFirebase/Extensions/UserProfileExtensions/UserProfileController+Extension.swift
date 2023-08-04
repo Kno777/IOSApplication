@@ -33,8 +33,19 @@ extension UserProfileController {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (view.frame.width - 2) / 3
-        return CGSize(width: width, height: width)
+        
+        if isGridView {
+            let width = (view.frame.width - 2) / 3
+            return CGSize(width: width, height: width)
+            
+        } else {
+            
+            var height: CGFloat = 40 + 8 + 8 // usernameLable and userProfileImageView
+            height += view.frame.width
+            height += 50 // photoImage bottom toolbar
+            height += 60 // username + post text and when posted // creation date
+            return CGSize(width: view.frame.width, height: height)
+        }
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -42,19 +53,32 @@ extension UserProfileController {
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAndCell.cellId, for: indexPath) as! UserProfilePostsCell
         
-        let post = self.posts[indexPath.item]
+        if isGridView {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAndCell.cellId, for: indexPath) as! UserProfilePostsCell
+            
+            let post = self.posts[indexPath.item]
+            
+            cell.post = post
+            
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HeaderAndCell.homePostCellIdForUserProfileListView, for: indexPath) as! HomePostCell
+            
+            let post = self.posts[indexPath.item]
+            
+            cell.post = post
+            
+            return cell
+        }
         
-        cell.post = post
-        
-        return cell
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderAndCell.headerId, for: indexPath) as! UserProfileHeader
         
         header.user = self.user
+        header.delegate = self
         
         return header
     }

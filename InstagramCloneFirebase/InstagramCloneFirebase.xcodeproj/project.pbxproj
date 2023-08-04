@@ -57,6 +57,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9350D3122A7D1DA300546905 /* InstagramCloneFirebase.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = InstagramCloneFirebase.entitlements; sourceTree = "<group>"; };
 		93B6BD8B2A71997300F5C3B4 /* InstagramCloneFirebase.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = InstagramCloneFirebase.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		93B6BD8E2A71997300F5C3B4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		93B6BD902A71997300F5C3B4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -138,6 +139,7 @@
 		93B6BD8D2A71997300F5C3B4 /* InstagramCloneFirebase */ = {
 			isa = PBXGroup;
 			children = (
+				9350D3122A7D1DA300546905 /* InstagramCloneFirebase.entitlements */,
 				93DEBA932A7B8AA200A6048F /* Protocols */,
 				93B6BDCD2A746B1700F5C3B4 /* Constants */,
 				93B6BDBF2A743AFA00F5C3B4 /* Models */,
@@ -707,11 +709,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = InstagramCloneFirebase/InstagramCloneFirebase.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BUV8XV7VQA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstagramCloneFirebase/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We would like access to your camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We'd like access to your photos right now ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -724,6 +730,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kno.InstagramCloneFirebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -735,11 +742,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = InstagramCloneFirebase/InstagramCloneFirebase.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BUV8XV7VQA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = InstagramCloneFirebase/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "We would like access to your camera";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "We'd like access to your photos right now ";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -752,6 +763,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.kno.InstagramCloneFirebase;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

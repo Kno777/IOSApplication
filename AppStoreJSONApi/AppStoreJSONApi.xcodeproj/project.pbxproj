@@ -15,6 +15,9 @@
 		933B0C992A82586F00C2A284 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 933B0C972A82586F00C2A284 /* LaunchScreen.storyboard */; };
 		933B0CA12A82598300C2A284 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CA02A82598300C2A284 /* MainTabBarController.swift */; };
 		933B0CA42A8265AA00C2A284 /* AppsSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CA32A8265AA00C2A284 /* AppsSearchController.swift */; };
+		933B0CA72A82690300C2A284 /* SearchResultCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CA62A82690300C2A284 /* SearchResultCell.swift */; };
+		933B0CAA2A82700D00C2A284 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CA92A82700D00C2A284 /* UIView+Layout.swift */; };
+		933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +31,9 @@
 		933B0C9A2A82586F00C2A284 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		933B0CA02A82598300C2A284 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		933B0CA32A8265AA00C2A284 /* AppsSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsSearchController.swift; sourceTree = "<group>"; };
+		933B0CA62A82690300C2A284 /* SearchResultCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultCell.swift; sourceTree = "<group>"; };
+		933B0CA92A82700D00C2A284 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
+		933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +66,9 @@
 		933B0C8B2A82586E00C2A284 /* AppStoreJSONApi */ = {
 			isa = PBXGroup;
 			children = (
+				933B0CAB2A82769200C2A284 /* Halpers */,
+				933B0CA82A826FFE00C2A284 /* Extensions */,
+				933B0CA52A8268E300C2A284 /* Views */,
 				933B0CA22A82659500C2A284 /* Controller */,
 				933B0C8C2A82586E00C2A284 /* AppDelegate.swift */,
 				933B0C8E2A82586E00C2A284 /* SceneDelegate.swift */,
@@ -79,6 +88,30 @@
 				933B0CA32A8265AA00C2A284 /* AppsSearchController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		933B0CA52A8268E300C2A284 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CA62A82690300C2A284 /* SearchResultCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		933B0CA82A826FFE00C2A284 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CA92A82700D00C2A284 /* UIView+Layout.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		933B0CAB2A82769200C2A284 /* Halpers */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */,
+			);
+			path = Halpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,8 +187,11 @@
 			files = (
 				933B0C912A82586E00C2A284 /* ViewController.swift in Sources */,
 				933B0C8D2A82586E00C2A284 /* AppDelegate.swift in Sources */,
+				933B0CAA2A82700D00C2A284 /* UIView+Layout.swift in Sources */,
 				933B0CA12A82598300C2A284 /* MainTabBarController.swift in Sources */,
 				933B0CA42A8265AA00C2A284 /* AppsSearchController.swift in Sources */,
+				933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */,
+				933B0CA72A82690300C2A284 /* SearchResultCell.swift in Sources */,
 				933B0C8F2A82586E00C2A284 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

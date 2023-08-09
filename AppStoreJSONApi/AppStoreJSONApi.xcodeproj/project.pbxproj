@@ -19,6 +19,7 @@
 		933B0CAA2A82700D00C2A284 /* UIView+Layout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CA92A82700D00C2A284 /* UIView+Layout.swift */; };
 		933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */; };
 		933B0CB12A837E4900C2A284 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CB02A837E4900C2A284 /* SearchResultModel.swift */; };
+		933B0CB42A83865D00C2A284 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CB32A83865D00C2A284 /* Service.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		933B0CA92A82700D00C2A284 /* UIView+Layout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Layout.swift"; sourceTree = "<group>"; };
 		933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		933B0CB02A837E4900C2A284 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
+		933B0CB32A83865D00C2A284 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +70,7 @@
 		933B0C8B2A82586E00C2A284 /* AppStoreJSONApi */ = {
 			isa = PBXGroup;
 			children = (
+				933B0CB22A83864F00C2A284 /* Service */,
 				933B0CAE2A837E2800C2A284 /* Models */,
 				933B0CAB2A82769200C2A284 /* Halpers */,
 				933B0CA82A826FFE00C2A284 /* Extensions */,
@@ -131,6 +134,14 @@
 				933B0CB02A837E4900C2A284 /* SearchResultModel.swift */,
 			);
 			path = SearchResult;
+			sourceTree = "<group>";
+		};
+		933B0CB22A83864F00C2A284 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CB32A83865D00C2A284 /* Service.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -211,6 +222,7 @@
 				933B0CA12A82598300C2A284 /* MainTabBarController.swift in Sources */,
 				933B0CA42A8265AA00C2A284 /* AppsSearchController.swift in Sources */,
 				933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */,
+				933B0CB42A83865D00C2A284 /* Service.swift in Sources */,
 				933B0CA72A82690300C2A284 /* SearchResultCell.swift in Sources */,
 				933B0C8F2A82586E00C2A284 /* SceneDelegate.swift in Sources */,
 			);

@@ -18,19 +18,19 @@ final class SearchResultCell: UICollectionViewCell {
         return image
     }()
     
-    private lazy var appLabel: UILabel = {
+    lazy var appLabel: UILabel = {
        let label = UILabel()
         label.text = "APP NAME"
         return label
     }()
     
-    private lazy var categoryLabel: UILabel = {
+    lazy var categoryLabel: UILabel = {
        let label = UILabel()
         label.text = "Photos & Videos"
         return label
     }()
     
-    private lazy var ratingsLabel: UILabel = {
+    lazy var ratingsLabel: UILabel = {
        let label = UILabel()
         label.text = "9.26M"
         return label

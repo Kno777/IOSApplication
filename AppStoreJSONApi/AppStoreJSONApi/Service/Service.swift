@@ -11,10 +11,10 @@ class Service {
     
     static let shared = Service() // singleton
     
-    func fetchApps(completion: @escaping ([ResultModel], Error?) -> ()) {
+    func fetchApps(searchTerm: String, completion: @escaping ([ResultModel], Error?) -> ()) {
         print("Fetching apps from Servic layer")
         
-        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+        let urlString = "https://itunes.apple.com/search?term=\(searchTerm)&entity=software"
         
         guard let url = URL(string: urlString) else { return }
         

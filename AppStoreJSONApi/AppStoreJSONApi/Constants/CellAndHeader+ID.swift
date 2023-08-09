@@ -12,14 +12,19 @@ enum SearchControllerCellAndHeaderID {
     static let headerID = "SearchControllerCellAndHeaderId.headerID"
 }
 
-enum AppsControllerCellAndHeaderID {
-    static let cellID = "AppsControllerCellAndHeaderID.cellID"
-    static let headerID = "AppsControllerCellAndHeaderID.headerID"
+enum AppsMainControllerCellAndHeaderID {
+    static let cellID = "AppsMainControllerCellAndHeaderID.cellID"
+    static let headerID = "AppsMainControllerCellAndHeaderID.headerID"
 }
 
 enum AppsHorizontalControllerCellAndHeaderID {
     static let cellID = "AppsHorizontalControllerCellAndHeaderID.cellID"
     static let headerID = "AppsHorizontalControllerCellAndHeaderID.headerID"
+}
+
+enum AppsHeaderHorizontalControllerCellAndHeaderID {
+    static let cellID = "AppsHeaderHorizontalControllerCellAndHeaderID.cellID"
+    static let headerID = "AppsHeaderHorizontalControllerCellAndHeaderID.headerID"
 }
 
 

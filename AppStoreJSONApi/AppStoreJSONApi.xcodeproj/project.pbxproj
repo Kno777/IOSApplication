@@ -20,6 +20,7 @@
 		933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */; };
 		933B0CB12A837E4900C2A284 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CB02A837E4900C2A284 /* SearchResultModel.swift */; };
 		933B0CB42A83865D00C2A284 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CB32A83865D00C2A284 /* Service.swift */; };
+		933B0CB72A838BE000C2A284 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 933B0CB62A838BE000C2A284 /* SDWebImage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				933B0CB72A838BE000C2A284 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +162,9 @@
 			dependencies = (
 			);
 			name = AppStoreJSONApi;
+			packageProductDependencies = (
+				933B0CB62A838BE000C2A284 /* SDWebImage */,
+			);
 			productName = AppStoreJSONApi;
 			productReference = 933B0C892A82586E00C2A284 /* AppStoreJSONApi.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +193,9 @@
 				Base,
 			);
 			mainGroup = 933B0C802A82586D00C2A284;
+			packageReferences = (
+				933B0CB52A838BE000C2A284 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 933B0C8A2A82586E00C2A284 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -442,6 +450,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		933B0CB52A838BE000C2A284 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SDWebImage/SDWebImage.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		933B0CB62A838BE000C2A284 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 933B0CB52A838BE000C2A284 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 933B0C812A82586D00C2A284 /* Project object */;
 }

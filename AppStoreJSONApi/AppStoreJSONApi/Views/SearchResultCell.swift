@@ -8,6 +8,24 @@
 import UIKit
 
 final class SearchResultCell: UICollectionViewCell {
+    var appResults: ResultModel? {
+        didSet {
+            guard let appResults = appResults else { return }
+            
+            appLabel.text = appResults.trackName
+            categoryLabel.text = appResults.primaryGenreName
+            ratingsLabel.text = "Ratings: \(appResults.averageUserRating)"
+            
+            let url = URL(string: appResults.artworkUrl100)
+            appIconImageView.sd_setImage(with: url)
+            
+            if appResults.screenshotUrls.count > 3 {
+                screenshot1ImageView.sd_setImage(with: URL(string: appResults.screenshotUrls[0]))
+                screenshot2ImageView.sd_setImage(with: URL(string: appResults.screenshotUrls[1]))
+                screenshot3ImageView.sd_setImage(with: URL(string: appResults.screenshotUrls[2]))
+            }
+        }
+    }
     
     private lazy var appIconImageView: UIImageView = {
        let image = UIImageView()
@@ -15,22 +33,24 @@ final class SearchResultCell: UICollectionViewCell {
         image.widthAnchor.constraint(equalToConstant: 64).isActive = true
         image.heightAnchor.constraint(equalToConstant: 64).isActive = true
         image.layer.cornerRadius = 12
+        image.contentMode = .scaleAspectFill
+        image.clipsToBounds = true
         return image
     }()
     
-    lazy var appLabel: UILabel = {
+    private lazy var appLabel: UILabel = {
        let label = UILabel()
         label.text = "APP NAME"
         return label
     }()
     
-    lazy var categoryLabel: UILabel = {
+    private lazy var categoryLabel: UILabel = {
        let label = UILabel()
         label.text = "Photos & Videos"
         return label
     }()
     
-    lazy var ratingsLabel: UILabel = {
+    private lazy var ratingsLabel: UILabel = {
        let label = UILabel()
         label.text = "9.26M"
         return label
@@ -55,6 +75,11 @@ final class SearchResultCell: UICollectionViewCell {
     private func createImageView() -> UIImageView {
         let imageView = UIImageView()
         imageView.backgroundColor = .blue
+        imageView.layer.cornerRadius = 8
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 0.5
+        imageView.layer.borderColor = UIColor(white: 0.5, alpha: 1).cgColor
+        imageView.contentMode = .scaleAspectFill
         return imageView
     }
     

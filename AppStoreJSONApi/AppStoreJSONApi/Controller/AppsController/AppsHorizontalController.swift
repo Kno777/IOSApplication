@@ -11,9 +11,7 @@ final class AppsHorizontalController: UICollectionViewController, UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.backgroundColor = .systemPink
-        
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: AppsHorizontalControllerCellAndHeaderID.cellID)
+        collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: AppsHorizontalControllerCellAndHeaderID.cellID)
         
         // MARK: - Change UICollectionView direction to horizontal
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
@@ -31,7 +29,7 @@ final class AppsHorizontalController: UICollectionViewController, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let height = (view.frame.height - 24 - 20) / 3
-        return .init(width: view.frame.width, height: height)
+        return .init(width: view.frame.width - 48, height: height)
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -39,10 +37,8 @@ final class AppsHorizontalController: UICollectionViewController, UICollectionVi
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHorizontalControllerCellAndHeaderID.cellID, for: indexPath)
-        
-        cell.backgroundColor = .blue
-        
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHorizontalControllerCellAndHeaderID.cellID, for: indexPath) as! AppRowCell
+                
         return cell
     }
 }

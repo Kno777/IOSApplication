@@ -24,16 +24,12 @@ final class AppsGroupCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        backgroundColor = .lightGray
-        
         addSubview(appSectionLabel)
         addSubview(horizontalViewController.view)
         
         horizontalViewController.view.anchor(top: appSectionLabel.bottomAnchor, leading: leadingAnchor, bottom: bottomAnchor, trailing: trailingAnchor)
         
-        horizontalViewController.view.backgroundColor = .blue
-        
-        appSectionLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor)
+        appSectionLabel.anchor(top: topAnchor, leading: leadingAnchor, bottom: nil, trailing: trailingAnchor, padding: UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 0))
     }
     
     required init?(coder: NSCoder) {

@@ -14,6 +14,35 @@ final class AppsSearchController: UICollectionViewController, UICollectionViewDe
         
         collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: "cellId")
         
+        fetchITunesApps()
+        
+    }
+    
+    fileprivate func fetchITunesApps() {
+        let urlString = "https://itunes.apple.com/search?term=instagram&entity=software"
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        URLSession.shared.dataTask(with: url) { data, resp, err in
+            if let err = err {
+                print("Failed to fetch apps: ", err)
+            }
+            
+            //print("Successfully fetched apps: ", String(data: data!, encoding: .utf8))
+            
+            guard let data = data else { return }
+            
+            do {
+                let searchResult = try JSONDecoder().decode(SearchResultModel.self, from: data)
+                
+                searchResult.results.forEach { res in
+                    print(res.trackName)
+                }
+            } catch {
+                print("Failed to decode json: ", error)
+            }
+            
+        }.resume()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

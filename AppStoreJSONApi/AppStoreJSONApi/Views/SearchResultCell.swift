@@ -15,14 +15,12 @@ final class SearchResultCell: UICollectionViewCell {
         image.widthAnchor.constraint(equalToConstant: 64).isActive = true
         image.heightAnchor.constraint(equalToConstant: 64).isActive = true
         image.layer.cornerRadius = 12
-        //image.translatesAutoresizingMaskIntoConstraints = false
         return image
     }()
     
     private lazy var appLabel: UILabel = {
        let label = UILabel()
         label.text = "APP NAME"
-        //label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
     

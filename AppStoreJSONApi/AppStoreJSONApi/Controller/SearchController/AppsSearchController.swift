@@ -31,7 +31,7 @@ final class AppsSearchController: UICollectionViewController, UICollectionViewDe
         enterSearchTermLabel.anchor(top: collectionView.topAnchor, leading: collectionView.leadingAnchor, bottom: nil, trailing: collectionView.trailingAnchor, padding: UIEdgeInsets(top: 100, left: 20, bottom: 0, right: 20))
         enterSearchTermLabel.centerXAnchor.constraint(equalTo: self.collectionView.centerXAnchor).isActive = true
         
-        collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: "cellId")
+        collectionView.register(SearchResultCell.self, forCellWithReuseIdentifier: SearchControllerCellAndHeaderID.cellID)
         
         //fetchITunesApps()
         
@@ -102,7 +102,7 @@ final class AppsSearchController: UICollectionViewController, UICollectionViewDe
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellId", for: indexPath) as! SearchResultCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchControllerCellAndHeaderID.cellID, for: indexPath) as! SearchResultCell
         
         if indexPath.item > self.appResults.count {
             return cell

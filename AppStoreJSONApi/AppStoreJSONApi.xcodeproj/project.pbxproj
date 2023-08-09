@@ -21,6 +21,11 @@
 		933B0CB12A837E4900C2A284 /* SearchResultModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CB02A837E4900C2A284 /* SearchResultModel.swift */; };
 		933B0CB42A83865D00C2A284 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CB32A83865D00C2A284 /* Service.swift */; };
 		933B0CB72A838BE000C2A284 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 933B0CB62A838BE000C2A284 /* SDWebImage */; };
+		933B0CBB2A83A35800C2A284 /* AppsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CBA2A83A35700C2A284 /* AppsController.swift */; };
+		933B0CBE2A83A45D00C2A284 /* CellAndHeader+ID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CBD2A83A45D00C2A284 /* CellAndHeader+ID.swift */; };
+		933B0CC22A83A65700C2A284 /* AppsGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CC12A83A65700C2A284 /* AppsGroupCell.swift */; };
+		933B0CC42A83A81F00C2A284 /* UILabel+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CC32A83A81F00C2A284 /* UILabel+init.swift */; };
+		933B0CC62A83AA9400C2A284 /* AppsHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CC52A83AA9400C2A284 /* AppsHorizontalController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +44,11 @@
 		933B0CAC2A8276B200C2A284 /* VerticalStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalStackView.swift; sourceTree = "<group>"; };
 		933B0CB02A837E4900C2A284 /* SearchResultModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultModel.swift; sourceTree = "<group>"; };
 		933B0CB32A83865D00C2A284 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		933B0CBA2A83A35700C2A284 /* AppsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsController.swift; sourceTree = "<group>"; };
+		933B0CBD2A83A45D00C2A284 /* CellAndHeader+ID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CellAndHeader+ID.swift"; sourceTree = "<group>"; };
+		933B0CC12A83A65700C2A284 /* AppsGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsGroupCell.swift; sourceTree = "<group>"; };
+		933B0CC32A83A81F00C2A284 /* UILabel+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+init.swift"; sourceTree = "<group>"; };
+		933B0CC52A83AA9400C2A284 /* AppsHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHorizontalController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +82,7 @@
 		933B0C8B2A82586E00C2A284 /* AppStoreJSONApi */ = {
 			isa = PBXGroup;
 			children = (
+				933B0CBC2A83A42B00C2A284 /* Constants */,
 				933B0CB22A83864F00C2A284 /* Service */,
 				933B0CAE2A837E2800C2A284 /* Models */,
 				933B0CAB2A82769200C2A284 /* Halpers */,
@@ -92,8 +103,9 @@
 		933B0CA22A82659500C2A284 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				933B0CB92A83A2E500C2A284 /* AppsController */,
+				933B0CB82A83A2D400C2A284 /* SearchController */,
 				933B0CA02A82598300C2A284 /* MainTabBarController.swift */,
-				933B0CA32A8265AA00C2A284 /* AppsSearchController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -101,7 +113,8 @@
 		933B0CA52A8268E300C2A284 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				933B0CA62A82690300C2A284 /* SearchResultCell.swift */,
+				933B0CC02A83A64800C2A284 /* AppsCell */,
+				933B0CBF2A83A63B00C2A284 /* SearchCell */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -110,6 +123,7 @@
 			isa = PBXGroup;
 			children = (
 				933B0CA92A82700D00C2A284 /* UIView+Layout.swift */,
+				933B0CC32A83A81F00C2A284 /* UILabel+init.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -144,6 +158,47 @@
 				933B0CB32A83865D00C2A284 /* Service.swift */,
 			);
 			path = Service;
+			sourceTree = "<group>";
+		};
+		933B0CB82A83A2D400C2A284 /* SearchController */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CA32A8265AA00C2A284 /* AppsSearchController.swift */,
+			);
+			path = SearchController;
+			sourceTree = "<group>";
+		};
+		933B0CB92A83A2E500C2A284 /* AppsController */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CBA2A83A35700C2A284 /* AppsController.swift */,
+				933B0CC52A83AA9400C2A284 /* AppsHorizontalController.swift */,
+			);
+			path = AppsController;
+			sourceTree = "<group>";
+		};
+		933B0CBC2A83A42B00C2A284 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CBD2A83A45D00C2A284 /* CellAndHeader+ID.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		933B0CBF2A83A63B00C2A284 /* SearchCell */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CA62A82690300C2A284 /* SearchResultCell.swift */,
+			);
+			path = SearchCell;
+			sourceTree = "<group>";
+		};
+		933B0CC02A83A64800C2A284 /* AppsCell */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CC12A83A65700C2A284 /* AppsGroupCell.swift */,
+			);
+			path = AppsCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -224,12 +279,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				933B0C912A82586E00C2A284 /* ViewController.swift in Sources */,
+				933B0CBE2A83A45D00C2A284 /* CellAndHeader+ID.swift in Sources */,
+				933B0CBB2A83A35800C2A284 /* AppsController.swift in Sources */,
 				933B0C8D2A82586E00C2A284 /* AppDelegate.swift in Sources */,
 				933B0CB12A837E4900C2A284 /* SearchResultModel.swift in Sources */,
+				933B0CC62A83AA9400C2A284 /* AppsHorizontalController.swift in Sources */,
 				933B0CAA2A82700D00C2A284 /* UIView+Layout.swift in Sources */,
+				933B0CC22A83A65700C2A284 /* AppsGroupCell.swift in Sources */,
 				933B0CA12A82598300C2A284 /* MainTabBarController.swift in Sources */,
 				933B0CA42A8265AA00C2A284 /* AppsSearchController.swift in Sources */,
 				933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */,
+				933B0CC42A83A81F00C2A284 /* UILabel+init.swift in Sources */,
 				933B0CB42A83865D00C2A284 /* Service.swift in Sources */,
 				933B0CA72A82690300C2A284 /* SearchResultCell.swift in Sources */,
 				933B0C8F2A82586E00C2A284 /* SceneDelegate.swift in Sources */,

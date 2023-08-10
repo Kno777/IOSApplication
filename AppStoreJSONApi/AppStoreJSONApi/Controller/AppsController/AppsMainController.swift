@@ -9,7 +9,7 @@ import UIKit
 
 final class AppsMainController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
-    var appGroup: [AppGroupModel] = []
+    var appsGroup: [AppGroupModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,13 +25,16 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
     
     fileprivate func fetchData() {
         print("Fetching new JSON data...")
-        Service.shared.fetchGames { appGroup, err in
+        Service.shared.fetchApps { appGroup, err in
             if let err = err {
                 print("Failed to fetch games from AppsMainController.", err)
                 return
             }
             guard let appGroup = appGroup else { return }
-            self.appGroup.append(appGroup)
+            
+            
+            self.appsGroup.append(appGroup)
+            
             
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
@@ -55,14 +58,14 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.appGroup.count
+        return self.appsGroup.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsMainControllerCellAndHeaderID.cellID, for: indexPath) as! AppsGroupCell
         
-        cell.appSectionLabel.text = appGroup[indexPath.item].feed.title
-        cell.horizontalViewController.appGroup = self.appGroup[indexPath.item]
+        cell.appSectionLabel.text = appsGroup[indexPath.item].feed.title
+        cell.horizontalViewController.appGroup = self.appsGroup[indexPath.item]
         //cell.horizontalViewController.collectionView.reloadData()
         return cell
     }

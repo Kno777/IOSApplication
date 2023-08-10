@@ -11,10 +11,38 @@ class Service {
     
     static let shared = Service() // singleton
     
-    func fetchGames(completion: @escaping (AppGroupModel?, Error?) -> ()) {
+    func fetchApps(completion: @escaping (AppGroupModel?, Error?) -> ()) {
         print("Fetching games from Servic layer.")
         
-        guard let url = URL(string: "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json") else { return }
+        let urlStringApps = "https://rss.applemarketingtools.com/api/v2/us/apps/top-free/50/apps.json"
+        let urlStringMusic = "https://rss.applemarketingtools.com/api/v2/us/music/most-played/50/albums.json"
+        let urlStringBooks = "https://rss.applemarketingtools.com/api/v2/us/books/top-free/50/books.json"
+                
+        // MARK: - help us sync out data fetches together
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        fetchAppGroups(urlString: urlStringApps, completion: completion)
+        dispatchGroup.leave()
+        
+        dispatchGroup.enter()
+        fetchAppGroups(urlString: urlStringMusic, completion: completion)
+        dispatchGroup.leave()
+        
+        dispatchGroup.enter()
+        fetchAppGroups(urlString: urlStringBooks, completion: completion)
+        dispatchGroup.leave()
+        
+        // completion
+        dispatchGroup.notify(queue: .main) {
+            print("completed you dispatch group task...")
+        }
+        
+    }
+    
+    // helper
+    func fetchAppGroups(urlString: String, completion: @escaping (AppGroupModel?, Error?) -> Void) {
+        guard let url = URL(string: urlString) else { return }
         
         URLSession.shared.dataTask(with: url) { data, resp, err in
             if let err = err {

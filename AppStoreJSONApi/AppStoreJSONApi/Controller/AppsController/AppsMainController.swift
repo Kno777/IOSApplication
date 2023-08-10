@@ -33,6 +33,10 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
             guard let appGroup = appGroup else { return }
             self.appGroup.append(appGroup)
             
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+            
         }
     }
     
@@ -51,12 +55,15 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return self.appGroup.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsMainControllerCellAndHeaderID.cellID, for: indexPath) as! AppsGroupCell
         
+        cell.appSectionLabel.text = appGroup[indexPath.item].feed.title
+        cell.horizontalViewController.appGroup = self.appGroup[indexPath.item]
+        //cell.horizontalViewController.collectionView.reloadData()
         return cell
     }
     

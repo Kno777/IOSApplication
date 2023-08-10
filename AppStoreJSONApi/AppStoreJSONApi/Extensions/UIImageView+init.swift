@@ -11,7 +11,7 @@ extension UIImageView {
     convenience init(corenerRadius: CGFloat) {
         self.init(image: nil)
         self.layer.cornerRadius = corenerRadius
-        self.clipsToBounds = false
+        self.clipsToBounds = true
         self.contentMode = .scaleAspectFill
     }
 }

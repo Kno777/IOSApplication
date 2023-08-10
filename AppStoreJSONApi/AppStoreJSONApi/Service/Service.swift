@@ -27,9 +27,6 @@ class Service {
             
             do {
                 let appGroup = try JSONDecoder().decode(AppGroupModel.self, from: data)
-                appGroup.feed.results.forEach { res in
-                    print(res.name)
-                }
                 completion(appGroup, nil)
             } catch {
                 print("Failed to decode json: ", error)

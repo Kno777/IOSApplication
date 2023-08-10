@@ -9,11 +9,11 @@ import UIKit
 
 final class AppRowCell: UICollectionViewCell {
     
-    private lazy var imageView = UIImageView(corenerRadius: 8)
+    lazy var imageView = UIImageView(corenerRadius: 12)
     
-    private lazy var nameLabel = UILabel(text: "App Name", font: .systemFont(ofSize: 20), color: nil, backgroundColor: nil)
+    lazy var nameLabel = UILabel(text: "App Name", font: .systemFont(ofSize: 20), color: nil, backgroundColor: nil)
 
-    private lazy var companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 13), color: nil, backgroundColor: nil)
+    lazy var companyLabel = UILabel(text: "Company Name", font: .systemFont(ofSize: 13), color: nil, backgroundColor: nil)
     
     private lazy var getButton: UIButton = {
         let button = UIButton(type: .system)

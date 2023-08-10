@@ -8,6 +8,9 @@
 import UIKit
 
 final class AppsHorizontalController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var appGroup: AppGroupModel?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -33,12 +36,18 @@ final class AppsHorizontalController: UICollectionViewController, UICollectionVi
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return self.appGroup?.feed.results.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHorizontalControllerCellAndHeaderID.cellID, for: indexPath) as! AppRowCell
-                
+        
+        guard let app = self.appGroup?.feed.results[indexPath.item] else { return cell }
+        
+        cell.nameLabel.text = app.name
+        cell.companyLabel.text = app.artistName
+        cell.imageView.sd_setImage(with: URL(string: app.artworkUrl100))
+        
         return cell
     }
 }

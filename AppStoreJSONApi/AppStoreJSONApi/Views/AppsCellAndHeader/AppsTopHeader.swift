@@ -9,7 +9,7 @@ import UIKit
 
 final class AppsTopHeader: UICollectionReusableView {
     
-    lazy var appHeaderHorizontalController = AppsHeaderHorizontalController(collectionViewLayout: UICollectionViewFlowLayout())
+    lazy var appHeaderHorizontalController = AppsHeaderHorizontalController()
     
     override init(frame: CGRect) {
         super.init(frame: frame)

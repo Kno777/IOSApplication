@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class AppsHorizontalController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+final class AppsHorizontalController: HorizontalSnappingController, UICollectionViewDelegateFlowLayout {
     
     var appGroup: AppGroupModel?
     
@@ -15,6 +15,8 @@ final class AppsHorizontalController: UICollectionViewController, UICollectionVi
         super.viewDidLoad()
         
         collectionView.register(AppRowCell.self, forCellWithReuseIdentifier: AppsHorizontalControllerCellAndHeaderID.cellID)
+        
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         
         // MARK: - Change UICollectionView direction to horizontal
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
@@ -27,7 +29,7 @@ final class AppsHorizontalController: UICollectionViewController, UICollectionVi
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 12, left: 16, bottom: 12, right: 16)
+        return .init(top: 12, left: 0, bottom: 12, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

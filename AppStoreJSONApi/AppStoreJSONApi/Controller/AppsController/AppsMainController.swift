@@ -10,6 +10,15 @@ import UIKit
 final class AppsMainController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     var appsGroup: [AppGroupModel] = []
+    var socialApps: [SocialAppsHeaderModel] = []
+    
+    private lazy var activityIndicatorView: UIActivityIndicatorView = {
+        let activity = UIActivityIndicatorView(style: .large)
+        activity.startAnimating()
+        activity.color = .black
+        activity.hidesWhenStopped = true
+        return activity
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,7 +29,32 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
         
         collectionView.register(AppsTopHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AppsMainControllerCellAndHeaderID.headerID)
         
+        view.addSubview(activityIndicatorView)
+        activityIndicatorView.fillSuperview()
+        
         fetchData()
+        fetchSocial()
+    }
+    
+    fileprivate func fetchSocial() {
+        print("Fetching social JSON Data...")
+        
+        Service.shared.fetchSocialAppsHeader { social, err in
+            if let err = err {
+                print("Failed to fetch social data...", err)
+                return
+            }
+            
+            guard let social = social else { return }
+            
+            self.socialApps = social
+            
+            DispatchQueue.main.async {
+                self.activityIndicatorView.stopAnimating()
+                self.collectionView.reloadData()
+            }
+           
+        }
     }
     
     fileprivate func fetchData() {
@@ -48,7 +82,11 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
     }
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppsMainControllerCellAndHeaderID.headerID, for: indexPath)
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AppsMainControllerCellAndHeaderID.headerID, for: indexPath) as! AppsTopHeader
+        
+        
+        header.appHeaderHorizontalController.socialAppsHeader = self.socialApps
+        header.appHeaderHorizontalController.collectionView.reloadData()
         
         return header
     }

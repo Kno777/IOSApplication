@@ -8,6 +8,9 @@
 import UIKit
 
 final class AppsHeaderHorizontalController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var socialAppsHeader: [SocialAppsHeaderModel]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -22,7 +25,7 @@ final class AppsHeaderHorizontalController: UICollectionViewController, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return .init(top: 0, left: 16, bottom: 0, right: 0)
+        return .init(top: 0, left: 16, bottom: 0, right: 16)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -30,11 +33,17 @@ final class AppsHeaderHorizontalController: UICollectionViewController, UICollec
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return socialAppsHeader?.count ?? 0
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AppsHeaderHorizontalControllerCellAndHeaderID.cellID, for: indexPath) as! AppsHeaderCell
+        
+        guard let socialApp = self.socialAppsHeader?[indexPath.item] else { return cell}
+        
+        cell.companyLabel.text = socialApp.name
+        cell.titleLabel.text = socialApp.tagline
+        cell.imageView.sd_setImage(with: URL(string: socialApp.imageUrl))
         
         return cell
     }

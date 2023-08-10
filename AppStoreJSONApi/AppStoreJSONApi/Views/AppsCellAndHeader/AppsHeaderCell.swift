@@ -9,18 +9,18 @@ import UIKit
 
 final class AppsHeaderCell: UICollectionViewCell {
     
-    private lazy var companyLabel = UILabel(text: "Facebook", font: .boldSystemFont(ofSize: 12), color: .systemBlue, backgroundColor: nil)
+    lazy var companyLabel = UILabel(text: "Facebook", font: .boldSystemFont(ofSize: 12), color: .systemBlue, backgroundColor: nil)
     
-    private lazy var titleLabel = UILabel(text: "Keeping up with friends is faster than ever", font: .systemFont(ofSize: 24), color: nil, backgroundColor: nil)
+    lazy var titleLabel = UILabel(text: "Keeping up with friends is faster than ever", font: .systemFont(ofSize: 24), color: nil, backgroundColor: nil)
     
-    private lazy var imageView = UIImageView(corenerRadius: 8)
+    lazy var imageView = UIImageView(corenerRadius: 12)
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         
         titleLabel.numberOfLines = 2
         
-        imageView.backgroundColor = .red
+        imageView.backgroundColor = .white
         let stackView = VerticalStackView(arrangedSubviews: [companyLabel, titleLabel, imageView], spacing: 12)
         addSubview(stackView)
         stackView.fillSuperview(padding: .init(top: 16, left: 0, bottom: 0, right: 0))

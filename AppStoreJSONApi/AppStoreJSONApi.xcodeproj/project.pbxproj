@@ -32,6 +32,7 @@
 		933B0CCE2A83C6AA00C2A284 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CCD2A83C6AA00C2A284 /* AppsHeaderHorizontalController.swift */; };
 		933B0CD02A83C92800C2A284 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CCF2A83C92800C2A284 /* AppsHeaderCell.swift */; };
 		933B0CF32A84CC9600C2A284 /* AppGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CF22A84CC9600C2A284 /* AppGroupModel.swift */; };
+		933B0CF62A84E7D400C2A284 /* SocialAppsHeaderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CF52A84E7D400C2A284 /* SocialAppsHeaderModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,6 +62,7 @@
 		933B0CCD2A83C6AA00C2A284 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		933B0CCF2A83C92800C2A284 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
 		933B0CF22A84CC9600C2A284 /* AppGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupModel.swift; sourceTree = "<group>"; };
+		933B0CF52A84E7D400C2A284 /* SocialAppsHeaderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAppsHeaderModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +154,7 @@
 		933B0CAE2A837E2800C2A284 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				933B0CF42A84E7B500C2A284 /* SocialAppsHeader */,
 				933B0CF12A84CC7F00C2A284 /* AppsGroup */,
 				933B0CAF2A837E3100C2A284 /* SearchResult */,
 			);
@@ -225,6 +228,14 @@
 				933B0CF22A84CC9600C2A284 /* AppGroupModel.swift */,
 			);
 			path = AppsGroup;
+			sourceTree = "<group>";
+		};
+		933B0CF42A84E7B500C2A284 /* SocialAppsHeader */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CF52A84E7D400C2A284 /* SocialAppsHeaderModel.swift */,
+			);
+			path = SocialAppsHeader;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -323,6 +334,7 @@
 				933B0CC42A83A81F00C2A284 /* UILabel+init.swift in Sources */,
 				933B0CCA2A83B27200C2A284 /* UIImageView+init.swift in Sources */,
 				933B0CB42A83865D00C2A284 /* Service.swift in Sources */,
+				933B0CF62A84E7D400C2A284 /* SocialAppsHeaderModel.swift in Sources */,
 				933B0CA72A82690300C2A284 /* SearchResultCell.swift in Sources */,
 				933B0C8F2A82586E00C2A284 /* SceneDelegate.swift in Sources */,
 			);

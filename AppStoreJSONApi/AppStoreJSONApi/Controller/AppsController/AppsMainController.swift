@@ -107,6 +107,7 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
         cell.horizontalViewController.didSelectHandler = { [weak self] feedResult in
             
             let appDetailController = AppDetailController()
+            appDetailController.appId = feedResult.id
             appDetailController.view.backgroundColor = .white
             appDetailController.navigationItem.title = feedResult.name
             self?.navigationController?.pushViewController(appDetailController, animated: true)

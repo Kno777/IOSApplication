@@ -9,14 +9,6 @@ import UIKit
 
 final class AppsGroupCell: UICollectionViewCell {
     
-    //lazy var appSectionLabel: UILabel = {
-    //   let label = UILabel()
-    //    label.text = "App Section"
-    //    label.font = .boldSystemFont(ofSize: 30)
-    //    label.backgroundColor = .red
-    //    return label
-    //}()
-    
     let horizontalViewController = AppsHorizontalController(collectionViewLayout: UICollectionViewFlowLayout())
     
     let appSectionLabel = UILabel(text: "App Section", font: .boldSystemFont(ofSize: 30), color: nil, backgroundColor: nil)
@@ -34,7 +26,5 @@ final class AppsGroupCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    
+    } 
 }

@@ -8,12 +8,32 @@
 import UIKit
 
 final class AppsMainController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    
+    var appGroup: [AppGroupModel] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.backgroundColor = .white
+        
         collectionView.register(AppsGroupCell.self, forCellWithReuseIdentifier: AppsMainControllerCellAndHeaderID.cellID)
+        
         collectionView.register(AppsTopHeader.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: AppsMainControllerCellAndHeaderID.headerID)
+        
+        fetchData()
+    }
+    
+    fileprivate func fetchData() {
+        print("Fetching new JSON data...")
+        Service.shared.fetchGames { appGroup, err in
+            if let err = err {
+                print("Failed to fetch games from AppsMainController.", err)
+                return
+            }
+            guard let appGroup = appGroup else { return }
+            self.appGroup.append(appGroup)
+            
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {

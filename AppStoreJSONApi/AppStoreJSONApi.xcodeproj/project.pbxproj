@@ -31,6 +31,7 @@
 		933B0CCC2A83C4ED00C2A284 /* AppsTopHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CCB2A83C4ED00C2A284 /* AppsTopHeader.swift */; };
 		933B0CCE2A83C6AA00C2A284 /* AppsHeaderHorizontalController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CCD2A83C6AA00C2A284 /* AppsHeaderHorizontalController.swift */; };
 		933B0CD02A83C92800C2A284 /* AppsHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CCF2A83C92800C2A284 /* AppsHeaderCell.swift */; };
+		933B0CF32A84CC9600C2A284 /* AppGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 933B0CF22A84CC9600C2A284 /* AppGroupModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -59,6 +60,7 @@
 		933B0CCB2A83C4ED00C2A284 /* AppsTopHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsTopHeader.swift; sourceTree = "<group>"; };
 		933B0CCD2A83C6AA00C2A284 /* AppsHeaderHorizontalController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderHorizontalController.swift; sourceTree = "<group>"; };
 		933B0CCF2A83C92800C2A284 /* AppsHeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppsHeaderCell.swift; sourceTree = "<group>"; };
+		933B0CF22A84CC9600C2A284 /* AppGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppGroupModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		933B0CAE2A837E2800C2A284 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				933B0CF12A84CC7F00C2A284 /* AppsGroup */,
 				933B0CAF2A837E3100C2A284 /* SearchResult */,
 			);
 			path = Models;
@@ -214,6 +217,14 @@
 				933B0CCF2A83C92800C2A284 /* AppsHeaderCell.swift */,
 			);
 			path = AppsCellAndHeader;
+			sourceTree = "<group>";
+		};
+		933B0CF12A84CC7F00C2A284 /* AppsGroup */ = {
+			isa = PBXGroup;
+			children = (
+				933B0CF22A84CC9600C2A284 /* AppGroupModel.swift */,
+			);
+			path = AppsGroup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -307,6 +318,7 @@
 				933B0CA12A82598300C2A284 /* MainTabBarController.swift in Sources */,
 				933B0CD02A83C92800C2A284 /* AppsHeaderCell.swift in Sources */,
 				933B0CA42A8265AA00C2A284 /* AppsSearchController.swift in Sources */,
+				933B0CF32A84CC9600C2A284 /* AppGroupModel.swift in Sources */,
 				933B0CAD2A8276B200C2A284 /* VerticalStackView.swift in Sources */,
 				933B0CC42A83A81F00C2A284 /* UILabel+init.swift in Sources */,
 				933B0CCA2A83B27200C2A284 /* UIImageView+init.swift in Sources */,

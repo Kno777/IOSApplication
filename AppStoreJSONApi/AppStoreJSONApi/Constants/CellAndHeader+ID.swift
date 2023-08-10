@@ -26,5 +26,3 @@ enum AppsHeaderHorizontalControllerCellAndHeaderID {
     static let cellID = "AppsHeaderHorizontalControllerCellAndHeaderID.cellID"
     static let headerID = "AppsHeaderHorizontalControllerCellAndHeaderID.headerID"
 }
-
-

@@ -11,6 +11,8 @@ final class AppsHorizontalController: HorizontalSnappingController, UICollection
     
     var appGroup: AppGroupModel?
     
+    var didSelectHandler: ((FeedResultModel) -> ())?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,6 +23,12 @@ final class AppsHorizontalController: HorizontalSnappingController, UICollection
         // MARK: - Change UICollectionView direction to horizontal
         if let layout = collectionViewLayout as? UICollectionViewFlowLayout {
             layout.scrollDirection = .horizontal
+        }
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if let app = appGroup?.feed.results[indexPath.item] {
+            self.didSelectHandler?(app)
         }
     }
     

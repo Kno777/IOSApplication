@@ -104,6 +104,14 @@ final class AppsMainController: UICollectionViewController, UICollectionViewDele
         
         cell.appSectionLabel.text = appsGroup[indexPath.item].feed.title
         cell.horizontalViewController.appGroup = self.appsGroup[indexPath.item]
+        cell.horizontalViewController.didSelectHandler = { [weak self] feedResult in
+            
+            let appDetailController = AppDetailController()
+            appDetailController.view.backgroundColor = .white
+            appDetailController.navigationItem.title = feedResult.name
+            self?.navigationController?.pushViewController(appDetailController, animated: true)
+            
+        }
         //cell.horizontalViewController.collectionView.reloadData()
         return cell
     }
